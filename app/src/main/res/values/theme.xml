@@ -21,16 +21,29 @@
 
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceSmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceMediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceLargeComponent</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearanceHeadline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearanceHeadline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearanceHeadline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearanceHeadline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearanceHeadline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearanceHeadline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearanceSubtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearanceSubtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearanceBody1</item>
+        <item name="textAppearanceBody2">@style/TextAppearanceBody2</item>
+        <item name="textAppearanceCaption">@style/TextAppearanceCaption</item>
+        <item name="textAppearanceButton">@style/TextAppearanceButton</item>
+        <item name="textAppearanceOverline">@style/TextAppearanceOverline</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.Splashscreen">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 </resources>
