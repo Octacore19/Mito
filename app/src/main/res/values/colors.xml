@@ -8,11 +8,11 @@
     <color name="colorSecondaryVariant">@color/secondaryColor2</color>
     <color name="colorOnSecondary">@color/otherColor</color>
 
-    <color name="colorBackground">@color/gray300</color>
-    <color name="colorOnBackground">@color/gray900</color>
+<!--    <color name="colorBackground">@color/gray300</color>
+    <color name="colorOnBackground">@color/secondaryColor</color>
 
     <color name="colorSurface">@color/gray300</color>
-    <color name="colorOnSurface">@color/gray900</color>
+    <color name="colorOnSurface">@color/secondaryColor</color>-->
 
     <color name="colorError">#B00020</color>
     <color name="colorOnError">#FFFFFF</color>
