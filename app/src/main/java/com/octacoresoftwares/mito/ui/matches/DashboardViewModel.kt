@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.dashboard
+package com.octacoresoftwares.mito.ui.matches
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

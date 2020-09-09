@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Mito</string>
-    <string name="title_home">Home</string>
+
+    <!-- Titles for the Bottom navigation for the main page -->
+    <string name="title_nearby">Nearby</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="title_splashscreen">Splashscreen</string>
+    <string name="title_container">Main</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

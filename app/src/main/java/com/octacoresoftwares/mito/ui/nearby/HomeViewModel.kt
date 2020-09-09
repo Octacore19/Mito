@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.home
+package com.octacoresoftwares.mito.ui.nearby
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

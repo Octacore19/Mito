@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.notifications
+package com.octacoresoftwares.mito.ui.chats
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
