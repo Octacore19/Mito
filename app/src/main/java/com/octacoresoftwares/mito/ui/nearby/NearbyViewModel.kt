@@ -1,13 +1,13 @@
-package com.octacoresoftwares.mito.ui.matches
+package com.octacoresoftwares.mito.ui.nearby
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
-class DashboardViewModel : ViewModel() {
-
+class NearbyViewModel @Inject constructor() : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is Nearby Fragment"
     }
     val text: LiveData<String> = _text
 }

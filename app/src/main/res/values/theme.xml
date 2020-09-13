@@ -19,6 +19,8 @@
         <item name="colorError">@color/colorError</item>
         <item name="colorOnError">@color/colorOnError</item>
 
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
 
@@ -39,6 +41,9 @@
         <item name="textAppearanceCaption">@style/TextAppearanceCaption</item>
         <item name="textAppearanceButton">@style/TextAppearanceButton</item>
         <item name="textAppearanceOverline">@style/TextAppearanceOverline</item>
+
+        <item name="textInputStyle">@style/AppTheme.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/AppTheme.Button</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -1,3 +1,9 @@
 <resources>
+    <style name="AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button">
+
+    </style>
 </resources>

@@ -30,7 +30,7 @@ class SplashScreenFragment : Fragment() {
         icon = view.findViewById(R.id.mito_logo)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_navigation_splash_screen_to_navigation_main)
+            findNavController().navigate(SplashScreenFragmentDirections.actionNavigationSplashScreenToNavigationLogin())
         }, 5000L)
         fadeIn()
     }

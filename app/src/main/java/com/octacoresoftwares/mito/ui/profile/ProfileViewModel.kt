@@ -1,13 +1,13 @@
-package com.octacoresoftwares.mito.ui.chats
+package com.octacoresoftwares.mito.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
-class NotificationsViewModel : ViewModel() {
-
+class ProfileViewModel @Inject constructor() : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is Profile Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -5,18 +5,23 @@
     android:id="@+id/container_navigation"
     app:startDestination="@id/navigation_dashboard">
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.octacoresoftwares.mito.ui.nearby.HomeFragment"
+        android:id="@+id/navigation_nearby"
+        android:name="com.octacoresoftwares.mito.ui.nearby.NearbyFragment"
         android:label="@string/title_nearby"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_nearby" />
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.octacoresoftwares.mito.ui.matches.DashboardFragment"
+        android:name="com.octacoresoftwares.mito.ui.matches.MatchesFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_matches" />
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.octacoresoftwares.mito.ui.chats.NotificationsFragment"
+        android:id="@+id/navigation_chats"
+        android:name="com.octacoresoftwares.mito.ui.chats.ChatsFragment"
         android:label="@string/title_chat"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.octacoresoftwares.mito.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -6,17 +6,18 @@
     <data>
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.profile.ProfileViewModel" />
+            type="com.octacoresoftwares.mito.ui.matches.MatchesViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.profile.ProfileFragment">
+        tools:context=".ui.matches.MatchesFragment">
 
         <include
             android:id="@+id/content"
-            layout="@layout/content_profile"
+            layout="@layout/content_matches"
             app:vm="@{vm}"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

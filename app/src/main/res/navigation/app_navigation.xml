@@ -11,8 +11,8 @@
         android:label="@string/title_splashscreen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_navigation_splash_screen_to_navigation_main"
-            app:destination="@id/navigation_main"
+            android:id="@+id/action_navigation_splash_screen_to_navigation_login"
+            app:destination="@id/navigation_login"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popUpTo="@id/navigation_splash_screen"
@@ -26,4 +26,13 @@
         android:name="com.octacoresoftwares.mito.ui.ContainerFragment"
         android:label="@string/title_container"
         tools:layout="@layout/fragment_container" />
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.octacoresoftwares.mito.ui.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_main"
+            app:destination="@id/navigation_main" />
+    </fragment>
 </navigation>

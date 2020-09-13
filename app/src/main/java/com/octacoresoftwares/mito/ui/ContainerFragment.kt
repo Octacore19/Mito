@@ -1,16 +1,16 @@
 package com.octacoresoftwares.mito.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.octacoresoftwares.mito.R
+import com.octacoresoftwares.mito.utils.BottomNavController
+import com.octacoresoftwares.mito.utils.setUpNavigation
 
 class ContainerFragment : Fragment() {
 
@@ -20,11 +20,9 @@ class ContainerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val navHost = NavHostFragment()
-        childFragmentManager.beginTransaction().replace(R.id.container_host_fragment, navHost).commitNow()
-        navHost.navController.setGraph(R.navigation.container_navigation)
+        val navController = requireActivity().findNavController(R.id.container_host_fragment)
 
         val navView: BottomNavigationView = view.findViewById(R.id.nav_view)
-        navView.setupWithNavController(navHost.navController)
+        NavigationUI.setupWithNavController(navView, navController)
     }
 }

@@ -23,5 +23,7 @@
     <color name="secondaryColor2">#EC4C6F</color>
     <color name="otherColor">#E78200</color>
     <color name="gray300">#E0E0E0</color>
+    <color name="gray400">#BDBDBD</color>
+    <color name="gray800">#424242</color>
     <color name="gray900">#212121</color>
 </resources>
