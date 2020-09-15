@@ -13,4 +13,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_login">Login</string>
     <string name="text_login">login</string>
+    <string name="content_description_logo">Logo for Mito Application</string>
 </resources>

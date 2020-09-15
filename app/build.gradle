@@ -92,7 +92,7 @@ dependencies {
 
     //Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
-    implementation "com.google.firebase:firebase-auth:19.3.2"
+    implementation "com.google.firebase:firebase-auth-ktx:19.4.0"
 
     // Work Manager dependency for Kotlin and coroutine
     def work_version = "2.4.0"

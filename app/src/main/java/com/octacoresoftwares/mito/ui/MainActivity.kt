@@ -1,12 +1,10 @@
 package com.octacoresoftwares.mito.ui
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.octacoresoftwares.mito.R
 
 class MainActivity : AppCompatActivity() {
@@ -17,14 +15,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(!onSupportNavigateUp())
+        if (!onSupportNavigateUp())
             super.onBackPressed()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController().navigateUp() || super.onSupportNavigateUp()
+        return if (appNavController().currentDestination?.id == R.id.navigation_main) {
+            if (containerNavController().currentDestination?.id == R.id.navigation_dashboard) {
+                appNavController().navigate(ContainerFragmentDirections.actionNavigationMainToNavigationLogin())
+                true
+            } else {
+                containerNavController().navigateUp()
+            }
+        } else
+            super.onSupportNavigateUp()
     }
 
-    private fun navController(): NavController
-        = findNavController(R.id.container_host_fragment)
+    private fun appNavController() = findNavController(R.id.app_host_fragment)
+
+    private fun containerNavController() = findNavController(R.id.container_host_fragment)
 }

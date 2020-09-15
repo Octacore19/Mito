@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.octacoresoftwares.mito.MikoApplication
+import com.octacoresoftwares.mito.MitoApplication
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentNearbyBinding
-import com.octacoresoftwares.mito.ui.chats.ChatsViewModel
 import javax.inject.Inject
 
 class NearbyFragment : Fragment() {
@@ -25,7 +23,7 @@ class NearbyFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as MikoApplication).appComponent.nearbyComponent().create().inject(this)
+        (requireActivity().application as MitoApplication).appComponent.nearbyComponent().create().inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

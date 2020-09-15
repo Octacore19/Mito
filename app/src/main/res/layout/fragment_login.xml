@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.octacoresoftwares.mito.ui.login.LoginViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -12,7 +15,8 @@
         tools:context=".ui.login.LoginFragment">
 
         <include android:id="@+id/content"
-            layout="@layout/content_login" />
+            layout="@layout/content_login"
+            app:vm="@{vm}"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

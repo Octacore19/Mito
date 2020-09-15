@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.octacoresoftwares.mito.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +22,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/mito_logo" />
+            app:srcCompat="@drawable/mito_logo"
+            android:contentDescription="@string/content_description_logo" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
@@ -47,7 +51,8 @@
                         android:id="@+id/user_email_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:text="@={vm.userEmail}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +67,8 @@
                         android:id="@+id/user_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:text="@={vm.userPassword}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -70,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="48dp"
+                    android:onClick="@{() -> vm.login()}"
                     android:padding="16dp"
                     android:text="@string/text_login" />
             </LinearLayout>
