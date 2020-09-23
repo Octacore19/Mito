@@ -1,9 +1,7 @@
-package com.octacoresoftwares.mito.ui
+package com.octacoresoftwares.mito.ui.container
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.octacoresoftwares.mito.R
 
@@ -25,13 +23,23 @@ class MainActivity : AppCompatActivity() {
                 appNavController().navigate(ContainerFragmentDirections.actionNavigationMainToNavigationLogin())
                 true
             } else {
-                containerNavController().navigateUp()
+                containerNavController().navigateUp() || super.onSupportNavigateUp()
             }
-        } else
+        } else if (appNavController().currentDestination?.id == R.id.navigation_registration){
+            if (registrationNavController().currentDestination?.id == R.id.navigation_create_account){
+                appNavController().navigateUp()
+                true
+            } else {
+                registrationNavController().navigateUp() || super.onSupportNavigateUp()
+            }
+        } else {
             super.onSupportNavigateUp()
+        }
     }
 
     private fun appNavController() = findNavController(R.id.app_host_fragment)
 
     private fun containerNavController() = findNavController(R.id.container_host_fragment)
+
+    private fun registrationNavController() = findNavController(R.id.registration_container_host_fragment)
 }

@@ -1,17 +1,14 @@
-package com.octacoresoftwares.mito.ui
+package com.octacoresoftwares.mito.ui.container
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.octacoresoftwares.mito.R
-import com.octacoresoftwares.mito.utils.BottomNavController
-import com.octacoresoftwares.mito.utils.setUpNavigation
 
 class ContainerFragment : Fragment() {
 
@@ -22,7 +19,6 @@ class ContainerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = requireActivity().findNavController(R.id.container_host_fragment)
-
         val navView: BottomNavigationView = view.findViewById(R.id.nav_view)
         NavigationUI.setupWithNavController(navView, navController)
     }

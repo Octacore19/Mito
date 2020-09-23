@@ -6,37 +6,33 @@
 
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.login.LoginViewModel" />
+            type="com.octacoresoftwares.mito.ui.registration.RegistrationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/header_text"
+            style="@style/AppTheme.TextViewHeadline"
             android:layout_width="0dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="128dp"
-            android:contentDescription="@string/content_description_logo"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/mito_logo" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="32dp"
             app:contentPadding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/header_text">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,48 +40,58 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/user_email_address_layout"
+                    android:id="@+id/first_name_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:enableError="@{vm.emailErrorEnabled}"
-                    app:errorText="@{vm.emailErrorText}"
-                    app:startIconDrawable="@drawable/ic_at">
+                    android:hint="@string/first_name">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/user_email_address"
+                        android:id="@+id/first_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:text="@={vm.userEmail}" />
+                        android:inputType="textPersonName"
+                        android:text="@={vm.firstName}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/user_password_layout"
+                    android:id="@+id/other_names_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    app:enableError="@{vm.passwordErrorEnabled}"
-                    app:endIconMode="password_toggle"
-                    app:errorText="@{vm.passwordErrorText}"
-                    app:startIconDrawable="@drawable/ic_password">
+                    android:hint="@string/other_names">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/user_password"
+                        android:id="@+id/other_names"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:text="@={vm.userPassword}" />
+                        android:inputType="textPersonName"
+                        android:text="@={vm.otherNames}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/last_name_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:hint="@string/last_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="@={vm.lastName}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/login_button"
+                    android:id="@+id/next_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="48dp"
-                    android:enabled="@{vm.buttonEnabled}"
-                    android:onClick="@{() -> vm.login()}"
+                    android:enabled="@{vm.createAccountButtonEnabled}"
+                    android:onClick="@{() -> vm.moveNameToNext()}"
                     android:padding="16dp"
-                    android:text="@string/text_login" />
+                    android:text="@string/text_next" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

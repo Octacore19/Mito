@@ -1,6 +1,7 @@
 package com.octacoresoftwares.mito.ui.splashscreen
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
@@ -28,7 +29,10 @@ class SplashScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         icon = view.findViewById(R.id.mito_logo)
+    }
 
+    override fun onStart() {
+        super.onStart()
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(SplashScreenFragmentDirections.actionNavigationSplashScreenToNavigationLogin())
         }, 5000L)

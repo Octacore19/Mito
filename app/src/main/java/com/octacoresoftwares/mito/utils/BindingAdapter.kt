@@ -1,5 +1,7 @@
 package com.octacoresoftwares.mito.utils
 
+import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputLayout
 
@@ -7,4 +9,13 @@ import com.google.android.material.textfield.TextInputLayout
 fun TextInputLayout.setErrorText(enabled: Boolean, text: String) {
     isErrorEnabled = enabled
     error = text
+}
+
+@BindingAdapter("setVisible")
+fun ConstraintLayout.setVisible(visible: Boolean) {
+    visibility = if (visible) {
+        View.VISIBLE
+    } else {
+        View.INVISIBLE
+    }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_navigation"
+    app:startDestination="@id/navigation_create_account">
+
+    <fragment
+        android:id="@+id/navigation_create_account"
+        android:name="com.octacoresoftwares.mito.ui.registration.fragments.CreateAccountFragment"
+        android:label="@string/title_create_account"
+        tools:layout="@layout/fragment_create_account">
+        <action
+            android:id="@+id/action_navigation_name_to_navigation_finish"
+            app:destination="@id/navigation_finish" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_finish"
+        android:name="com.octacoresoftwares.mito.ui.registration.fragments.FinishRegistrationFragment"
+        android:label="@string/title_finish_registration"
+        tools:layout="@layout/fragment_finish_registration" />
+</navigation>

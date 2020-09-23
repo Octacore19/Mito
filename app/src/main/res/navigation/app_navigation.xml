@@ -9,38 +9,53 @@
         android:id="@+id/navigation_splash_screen"
         android:name="com.octacoresoftwares.mito.ui.splashscreen.SplashScreenFragment"
         android:label="@string/title_splashscreen"
-        tools:layout="@layout/fragment_splash_screen" >
+        tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_navigation_splash_screen_to_navigation_login"
             app:destination="@id/navigation_login"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@id/navigation_splash_screen"
-            app:popUpToInclusive="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/navigation_splash_screen"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_main"
-        android:name="com.octacoresoftwares.mito.ui.ContainerFragment"
+        android:name="com.octacoresoftwares.mito.ui.container.ContainerFragment"
         android:label="@string/title_container"
-        tools:layout="@layout/fragment_container" >
+        tools:layout="@layout/fragment_container">
         <action
             android:id="@+id/action_navigation_main_to_navigation_login"
             app:destination="@id/navigation_login"
             app:popUpTo="@id/navigation_main"
             app:popUpToInclusive="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_registration"
+        android:name="com.octacoresoftwares.mito.ui.registration.RegistrationContainerFragment"
+        android:label="@string/title_registration"
+        tools:layout="@layout/fragment_registration_container">
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_login"
         android:name="com.octacoresoftwares.mito.ui.login.LoginFragment"
         android:label="@string/title_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_navigation_login_to_navigation_main"
             app:destination="@id/navigation_main"
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_login" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_registration"
+            app:destination="@id/navigation_registration" />
     </fragment>
 </navigation>

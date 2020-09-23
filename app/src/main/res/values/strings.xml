@@ -14,4 +14,17 @@
     <string name="title_login">Login</string>
     <string name="text_login">login</string>
     <string name="content_description_logo">Logo for Mito Application</string>
+    <string name="title_registration">Registration</string>
+    <string name="last_name">Last Name</string>
+    <string name="other_names">Other Names</string>
+    <string name="first_name">First Name</string>
+    <string name="text_next">Next</string>
+    <string name="title_finish_registration">Finish Registration</string>
+    <string name="title_create_account">Create Account</string>
+    <string name="create_new_account">Create new account</string>
+    <string name="user_name">Username</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_account">Create Account</string>
 </resources>

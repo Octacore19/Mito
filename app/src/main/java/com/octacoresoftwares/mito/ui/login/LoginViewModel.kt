@@ -1,7 +1,6 @@
 package com.octacoresoftwares.mito.ui.login
 
 import androidx.databinding.Bindable
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
 import com.octacoresoftwares.mito.BR
@@ -14,10 +13,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val repo: LoginRepository) :
     ObservableViewModel() {
 
-    private val _success = MutableLiveData<FirebaseUser>()
-    private val _error = MutableLiveData<Any>()
-    val success: LiveData<FirebaseUser> = _success
-    val error: LiveData<Any> = _error
+    val success = MutableLiveData<FirebaseUser>()
+    val error = MutableLiveData<Any>()
 
     @get: Bindable
     var userEmail = ""
@@ -37,6 +34,8 @@ class LoginViewModel @Inject constructor(private val repo: LoginRepository) :
                 emailErrorEnabled = false
                 emailErrorText = ""
             }
+
+            buttonEnabled = enableLoginButton()
         }
 
     @get: Bindable
@@ -57,6 +56,8 @@ class LoginViewModel @Inject constructor(private val repo: LoginRepository) :
                 passwordErrorEnabled = false
                 passwordErrorText = ""
             }
+
+            buttonEnabled = enableLoginButton()
         }
 
     @get: Bindable
@@ -87,33 +88,29 @@ class LoginViewModel @Inject constructor(private val repo: LoginRepository) :
             notifyPropertyChanged(BR.passwordErrorEnabled)
         }
 
-    fun login() {
-        when {
-            userEmail.isEmpty() && userPassword.isEmpty() -> {
-                emailErrorEnabled = true
-                passwordErrorEnabled = true
-                emailErrorText = "Field cannot be empty"
-                passwordErrorText = "Field cannot be empty"
-            }
-            userEmail.isEmpty() -> {
-                emailErrorEnabled = true
-                emailErrorText = "Field cannot be empty"
-            }
-            userPassword.isEmpty() -> {
-                passwordErrorEnabled = true
-                passwordErrorText = "Field cannot be empty"
-            }
-            else -> {
-                repo.login(userEmail, userPassword, object : Callback {
-                    override fun onSuccess(success: Success<Any>) {
-                        _success.value = success.data as FirebaseUser
-                    }
-
-                    override fun onError(error: Error) {
-                        _error.value = error
-                    }
-                })
-            }
+    @get: Bindable
+    var buttonEnabled = false
+        private set(value) {
+            field = value
+            notifyPropertyChanged(BR.buttonEnabled)
         }
+
+    fun login() {
+
+        repo.login(userEmail.trim(), userPassword.trim(), object : Callback {
+            override fun onSuccess(success: Success<Any>) {
+                this@LoginViewModel.success.value = success.data as FirebaseUser
+            }
+
+            override fun onError(error: Error) {
+                this@LoginViewModel.error.value = error.exception
+            }
+        })
+    }
+
+    private fun enableLoginButton() = if (userEmail.isNotEmpty() && userPassword.isNotEmpty()) {
+        !passwordErrorEnabled && !emailErrorEnabled
+    } else {
+        false
     }
 }

@@ -1,9 +1,9 @@
 <resources>
-    <style name="AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
-    </style>
-
-    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button">
-
+    <style name="AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"/>
+    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button"/>
+    <style name="AppTheme.TextViewHeadline">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline3</item>
+        <item name="android:fontFamily">@font/amita</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 </resources>
