@@ -34,7 +34,7 @@ class SplashScreenFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(SplashScreenFragmentDirections.actionNavigationSplashScreenToNavigationLogin())
+            findNavController().navigate(SplashScreenFragmentDirections.actionNavigationSplashScreenToNavigationChooser())
         }, 5000L)
         fadeIn()
     }

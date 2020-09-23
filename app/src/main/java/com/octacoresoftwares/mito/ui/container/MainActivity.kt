@@ -20,18 +20,20 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return if (appNavController().currentDestination?.id == R.id.navigation_main) {
             if (containerNavController().currentDestination?.id == R.id.navigation_dashboard) {
-                appNavController().navigate(ContainerFragmentDirections.actionNavigationMainToNavigationLogin())
+                appNavController().navigate(ContainerFragmentDirections.actionNavigationMainToNavigationChooser())
                 true
             } else {
                 containerNavController().navigateUp() || super.onSupportNavigateUp()
             }
-        } else if (appNavController().currentDestination?.id == R.id.navigation_registration){
-            if (registrationNavController().currentDestination?.id == R.id.navigation_create_account){
+        } else if (appNavController().currentDestination?.id == R.id.navigation_registration) {
+            if (registrationNavController().currentDestination?.id == R.id.navigation_create_account) {
                 appNavController().navigateUp()
                 true
             } else {
                 registrationNavController().navigateUp() || super.onSupportNavigateUp()
             }
+        } else if (appNavController().currentDestination?.id == R.id.navigation_login) {
+            appNavController().navigateUp()
         } else {
             super.onSupportNavigateUp()
         }

@@ -27,4 +27,6 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_account">Create Account</string>
+    <string name="title_chooser">Chooser</string>
+    <string name="get_started">Get Started</string>
 </resources>

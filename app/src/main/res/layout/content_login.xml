@@ -84,7 +84,6 @@
                     android:layout_marginTop="48dp"
                     android:enabled="@{vm.buttonEnabled}"
                     android:onClick="@{() -> vm.login()}"
-                    android:padding="16dp"
                     android:text="@string/text_login" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

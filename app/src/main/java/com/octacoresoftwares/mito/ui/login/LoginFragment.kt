@@ -68,8 +68,6 @@ class LoginFragment : Fragment() {
                             "Error: ${it.message}",
                             Toast.LENGTH_SHORT
                         ).show()
-                        val action = LoginFragmentDirections.actionNavigationLoginToNavigationRegistration(viewModel.userEmail)
-                        findNavController().navigate(action)
                     }
                     else -> {
                         Toast.makeText(
