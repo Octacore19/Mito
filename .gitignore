@@ -39,3 +39,13 @@ output.json
 #NDK
 obj/
 /app/google-services.json
+.idea/$CACHE_FILE$
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/Project.xml
+.idea/copyright/profiles_settings.xml
+.idea/dictionaries
+.idea/gradle.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+.idea/vcs.xml
