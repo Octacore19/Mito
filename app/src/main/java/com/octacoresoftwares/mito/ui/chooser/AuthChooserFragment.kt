@@ -32,7 +32,7 @@ class AuthChooserFragment : Fragment() {
         }
 
         binding.getStartedButton.setOnClickListener {
-            val action = AuthChooserFragmentDirections.actionNavigationChooserToNavigationRegistration(null)
+            val action = AuthChooserFragmentDirections.actionNavigationChooserToNavigationRegistration()
             findNavController().navigate(action)
         }
     }

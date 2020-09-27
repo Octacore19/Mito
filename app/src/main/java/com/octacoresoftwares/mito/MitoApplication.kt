@@ -4,9 +4,7 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.octacoresoftwares.mito.di.AppComponent
 import com.octacoresoftwares.mito.di.DaggerAppComponent
-import com.octacoresoftwares.mito.ui.user.di.DaggerUserComponent
 
 class MitoApplication: Application() {
     override fun onCreate() {

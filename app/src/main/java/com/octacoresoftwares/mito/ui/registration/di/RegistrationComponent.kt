@@ -14,6 +14,5 @@ interface RegistrationComponent {
         fun create(): RegistrationComponent
     }
 
-    fun inject(fragment: RegistrationContainerFragment)
     fun inject(fragment: CreateAccountFragment)
 }

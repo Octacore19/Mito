@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.octacoresoftwares.mito.MitoApplication
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentChatsBinding
+import com.octacoresoftwares.mito.ui.container.ContainerFragment
 import javax.inject.Inject
 
 class ChatsFragment : Fragment() {
@@ -21,9 +22,13 @@ class ChatsFragment : Fragment() {
     private val viewModel by viewModels<ChatsViewModel> { factory }
     private lateinit var binding: FragmentChatsBinding
 
+    private val parentFragment by lazy {
+        requireParentFragment().requireParentFragment() as ContainerFragment
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        (requireActivity().application as MitoApplication).appComponent.chatComponent().create().inject(this)
+        parentFragment.userManager.userComponent?.chatComponent()?.create()?.inject(this)
     }
 
     override fun onCreateView(

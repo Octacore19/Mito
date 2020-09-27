@@ -16,12 +16,6 @@ import javax.inject.Inject
 
 class RegistrationContainerFragment : Fragment() {
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
-
-    val viewModel by viewModels<RegistrationViewModel> { factory }
-
-    private val args: RegistrationContainerFragmentArgs by navArgs()
     lateinit var registrationComponent: RegistrationComponent
 
     override fun onAttach(context: Context) {
@@ -29,7 +23,6 @@ class RegistrationContainerFragment : Fragment() {
         registrationComponent =
             (requireActivity().application as MitoApplication).appComponent.registrationComponent()
                 .create()
-        registrationComponent.inject(this)
     }
 
     override fun onCreateView(
@@ -37,11 +30,4 @@ class RegistrationContainerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_registration_container, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val email = args.email
-        if (email != null) {
-            viewModel.userEmail = email
-        }
-    }
 }

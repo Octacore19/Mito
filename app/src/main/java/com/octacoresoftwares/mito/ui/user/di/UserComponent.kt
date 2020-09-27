@@ -1,20 +1,18 @@
 package com.octacoresoftwares.mito.ui.user.di
 
-import com.octacoresoftwares.mito.di.AppComponent
-import com.octacoresoftwares.mito.di.ViewModelBuilderModule
 import com.octacoresoftwares.mito.ui.user.chats.di.ChatsComponent
 import com.octacoresoftwares.mito.ui.user.matches.di.MatchesComponent
 import com.octacoresoftwares.mito.ui.user.nearby.di.NearbyComponent
 import com.octacoresoftwares.mito.ui.user.profile.di.ProfileComponent
-import dagger.Component
 import dagger.Module
+import dagger.Subcomponent
 
-@Component(dependencies = [AppComponent::class], modules = [ViewModelBuilderModule::class, UserSubComponents::class])
+@Subcomponent(modules = [UserSubComponents::class])
 interface UserComponent {
 
-    @Component.Factory
+    @Subcomponent.Factory
     interface Factory {
-        fun create(appComponent: AppComponent): UserComponent
+        fun create(): UserComponent
     }
 
     fun chatComponent(): ChatsComponent.Factory

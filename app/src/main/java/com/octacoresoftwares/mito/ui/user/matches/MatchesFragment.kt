@@ -8,22 +8,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.octacoresoftwares.mito.MitoApplication
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentMatchesBinding
+import com.octacoresoftwares.mito.ui.container.ContainerFragment
 import javax.inject.Inject
 
 class MatchesFragment : Fragment() {
 
-    /*@Inject
+    @Inject
     lateinit var factory: ViewModelProvider.Factory
 
-    private val viewModel by viewModels<MatchesViewModel> { factory }*/
+    private val viewModel by viewModels<MatchesViewModel> { factory }
     private lateinit var binding: FragmentMatchesBinding
+
+    private val parentFragment by lazy {
+        requireParentFragment().requireParentFragment() as ContainerFragment
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        (requireActivity().application as MitoApplication).appComponent.matchesComponent().create().inject(this)
+        parentFragment.userManager.userComponent?.matchesComponent()?.create()?.inject(this)
     }
 
     override fun onCreateView(
@@ -33,7 +37,7 @@ class MatchesFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_matches, container, false)
         binding = FragmentMatchesBinding.bind(view)
-//        binding.vm = viewModel
+        binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }

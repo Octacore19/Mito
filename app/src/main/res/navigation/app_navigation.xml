@@ -34,10 +34,6 @@
         android:name="com.octacoresoftwares.mito.ui.registration.RegistrationContainerFragment"
         android:label="@string/title_registration"
         tools:layout="@layout/fragment_registration_container">
-        <argument
-            android:name="email"
-            app:argType="string"
-            app:nullable="true" />
         <action
             android:id="@+id/action_navigation_registration_to_navigation_main"
             app:destination="@id/navigation_main"

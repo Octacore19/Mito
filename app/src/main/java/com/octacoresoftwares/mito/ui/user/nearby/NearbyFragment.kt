@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.octacoresoftwares.mito.MitoApplication
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentNearbyBinding
+import com.octacoresoftwares.mito.ui.container.ContainerFragment
 import javax.inject.Inject
 
 class NearbyFragment : Fragment() {
@@ -21,9 +22,13 @@ class NearbyFragment : Fragment() {
     private val viewModel by viewModels<NearbyViewModel> { factory }
     private lateinit var binding: FragmentNearbyBinding
 
+    private val parentFragment by lazy {
+        requireParentFragment().requireParentFragment() as ContainerFragment
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        (requireActivity().application as MitoApplication).appComponent.nearbyComponent().create().inject(this)
+        parentFragment.userManager.userComponent?.nearbyComponent()?.create()?.inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

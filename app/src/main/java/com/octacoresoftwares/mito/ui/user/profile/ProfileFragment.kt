@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.octacoresoftwares.mito.MitoApplication
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentProfileBinding
+import com.octacoresoftwares.mito.ui.container.ContainerFragment
 import javax.inject.Inject
 
 class ProfileFragment : Fragment() {
@@ -21,9 +22,13 @@ class ProfileFragment : Fragment() {
     private val viewModel by viewModels<ProfileViewModel> { factory }
     private lateinit var binding: FragmentProfileBinding
 
+    private val parentFragment by lazy {
+        requireParentFragment().requireParentFragment() as ContainerFragment
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        (requireActivity().application as MitoApplication).appComponent.profileComponent().create().inject(this)
+        parentFragment.userManager.userComponent?.profileComponent()?.create()?.inject(this)
     }
 
     override fun onCreateView(
