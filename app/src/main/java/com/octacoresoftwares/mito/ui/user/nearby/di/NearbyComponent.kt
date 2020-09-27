@@ -1,6 +1,6 @@
-package com.octacoresoftwares.mito.ui.nearby.di
+package com.octacoresoftwares.mito.ui.user.nearby.di
 
-import com.octacoresoftwares.mito.ui.nearby.NearbyFragment
+import com.octacoresoftwares.mito.ui.user.nearby.NearbyFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [NearbyModule::class])

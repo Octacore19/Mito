@@ -1,6 +1,6 @@
-package com.octacoresoftwares.mito.ui.profile.di
+package com.octacoresoftwares.mito.ui.user.profile.di
 
-import com.octacoresoftwares.mito.ui.profile.ProfileFragment
+import com.octacoresoftwares.mito.ui.user.profile.ProfileFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [ProfileModule::class])

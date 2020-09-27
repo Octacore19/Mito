@@ -1,8 +1,8 @@
-package com.octacoresoftwares.mito.ui.matches.di
+package com.octacoresoftwares.mito.ui.user.matches.di
 
 import androidx.lifecycle.ViewModel
 import com.octacoresoftwares.mito.di.ViewModelKey
-import com.octacoresoftwares.mito.ui.matches.MatchesViewModel
+import com.octacoresoftwares.mito.ui.user.matches.MatchesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

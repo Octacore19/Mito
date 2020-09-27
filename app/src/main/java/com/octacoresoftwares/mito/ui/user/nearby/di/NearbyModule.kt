@@ -1,8 +1,8 @@
-package com.octacoresoftwares.mito.ui.nearby.di
+package com.octacoresoftwares.mito.ui.user.nearby.di
 
 import androidx.lifecycle.ViewModel
 import com.octacoresoftwares.mito.di.ViewModelKey
-import com.octacoresoftwares.mito.ui.nearby.NearbyViewModel
+import com.octacoresoftwares.mito.ui.user.nearby.NearbyViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

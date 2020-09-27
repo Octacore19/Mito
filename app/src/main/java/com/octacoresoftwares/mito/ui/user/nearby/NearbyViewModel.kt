@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.nearby
+package com.octacoresoftwares.mito.ui.user.nearby
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -6,6 +6,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.octacoresoftwares.mito.di.AppComponent
 import com.octacoresoftwares.mito.di.DaggerAppComponent
+import com.octacoresoftwares.mito.ui.user.di.DaggerUserComponent
 
 class MitoApplication: Application() {
     override fun onCreate() {
@@ -22,9 +23,5 @@ class MitoApplication: Application() {
         initializeComponent()
     }
 
-    private fun initializeComponent(): AppComponent {
-        // Creates an instance of AppComponent using its Factory constructor
-        // We pass the applicationContext that will be used as Context in the graph
-        return DaggerAppComponent.factory().create(Firebase.auth)
-    }
+    private fun initializeComponent() = DaggerAppComponent.factory().create(Firebase.auth)
 }

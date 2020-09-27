@@ -1,6 +1,6 @@
-package com.octacoresoftwares.mito.ui.matches.di
+package com.octacoresoftwares.mito.ui.user.matches.di
 
-import com.octacoresoftwares.mito.ui.matches.MatchesFragment
+import com.octacoresoftwares.mito.ui.user.matches.MatchesFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [MatchesModule::class])

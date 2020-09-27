@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.chats
+package com.octacoresoftwares.mito.ui.user.chats
 
 import android.content.Context
 import android.os.Bundle
@@ -23,7 +23,7 @@ class ChatsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as MitoApplication).appComponent.chatComponent().create().inject(this)
+//        (requireActivity().application as MitoApplication).appComponent.chatComponent().create().inject(this)
     }
 
     override fun onCreateView(

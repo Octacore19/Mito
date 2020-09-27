@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.profile
+package com.octacoresoftwares.mito.ui.user.profile
 
 import android.content.Context
 import android.os.Bundle
@@ -23,7 +23,7 @@ class ProfileFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as MitoApplication).appComponent.profileComponent().create().inject(this)
+//        (requireActivity().application as MitoApplication).appComponent.profileComponent().create().inject(this)
     }
 
     override fun onCreateView(

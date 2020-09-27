@@ -11,12 +11,8 @@
         android:label="@string/title_splashscreen"
         tools:layout="@layout/fragment_splash_screen">
         <action
-            android:id="@+id/action_navigation_splash_screen_to_navigation_chooser"
-            app:destination="@id/navigation_chooser"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            android:id="@+id/action_navigation_splash_screen_to_navigation_main"
+            app:destination="@id/navigation_main"
             app:popUpTo="@id/navigation_splash_screen"
             app:popUpToInclusive="true" />
     </fragment>

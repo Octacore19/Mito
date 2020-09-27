@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.nearby
+package com.octacoresoftwares.mito.ui.user.nearby
 
 import android.content.Context
 import android.os.Bundle
@@ -23,7 +23,7 @@ class NearbyFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as MitoApplication).appComponent.nearbyComponent().create().inject(this)
+//        (requireActivity().application as MitoApplication).appComponent.nearbyComponent().create().inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

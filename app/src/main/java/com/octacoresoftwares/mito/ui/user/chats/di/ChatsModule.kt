@@ -1,8 +1,8 @@
-package com.octacoresoftwares.mito.ui.chats.di
+package com.octacoresoftwares.mito.ui.user.chats.di
 
 import androidx.lifecycle.ViewModel
 import com.octacoresoftwares.mito.di.ViewModelKey
-import com.octacoresoftwares.mito.ui.chats.ChatsViewModel
+import com.octacoresoftwares.mito.ui.user.chats.ChatsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.nearby.NearbyViewModel" />
+            type="com.octacoresoftwares.mito.ui.user.nearby.NearbyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

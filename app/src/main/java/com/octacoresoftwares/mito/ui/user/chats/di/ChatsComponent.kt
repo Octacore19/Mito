@@ -1,6 +1,6 @@
-package com.octacoresoftwares.mito.ui.chats.di
+package com.octacoresoftwares.mito.ui.user.chats.di
 
-import com.octacoresoftwares.mito.ui.chats.ChatsFragment
+import com.octacoresoftwares.mito.ui.user.chats.ChatsFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [ChatsModule::class])

@@ -6,13 +6,13 @@
     <data>
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.profile.ProfileViewModel" />
+            type="com.octacoresoftwares.mito.ui.user.profile.ProfileViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.profile.ProfileFragment">
+        tools:context=".ui.user.profile.ProfileFragment">
 
         <include
             android:id="@+id/content"

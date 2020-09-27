@@ -1,8 +1,8 @@
-package com.octacoresoftwares.mito.ui.profile.di
+package com.octacoresoftwares.mito.ui.user.profile.di
 
 import androidx.lifecycle.ViewModel
 import com.octacoresoftwares.mito.di.ViewModelKey
-import com.octacoresoftwares.mito.ui.profile.ProfileViewModel
+import com.octacoresoftwares.mito.ui.user.profile.ProfileViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
