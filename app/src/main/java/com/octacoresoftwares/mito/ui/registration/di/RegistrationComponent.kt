@@ -6,10 +6,11 @@ import com.octacoresoftwares.mito.ui.registration.create.di.CreateAccountCompone
 import com.octacoresoftwares.mito.ui.registration.name.di.NameRegistrationComponent
 import dagger.Module
 import dagger.Subcomponent
+import java.io.Serializable
 
 @RegistrationScope
 @Subcomponent(modules = [RegistrationSubComponents::class, RegistrationModule::class])
-interface RegistrationComponent {
+interface RegistrationComponent: Serializable {
 
     @Subcomponent.Factory
     interface Factory {

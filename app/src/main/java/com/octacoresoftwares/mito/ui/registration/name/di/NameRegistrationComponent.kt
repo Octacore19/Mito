@@ -1,6 +1,5 @@
 package com.octacoresoftwares.mito.ui.registration.name.di
 
-import com.octacoresoftwares.mito.di.RegistrationScope
 import com.octacoresoftwares.mito.ui.registration.name.NameRegistrationFragment
 import dagger.Subcomponent
 import java.io.Serializable

@@ -35,6 +35,10 @@
         <item name="android:fontFamily">@font/amiko</item>
     </style>
 
+    <style name="TextAppearanceHeadline6.ToolbarTextAppearance">
+        <item name="fontFamily">@font/amita</item>
+    </style>
+
     <style name="TextAppearanceSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="fontFamily">@font/amiko</item>
         <item name="android:fontFamily">@font/amiko</item>

@@ -29,6 +29,7 @@ class RegistrationContainerFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         registrationComponent =
             (requireActivity().application as MitoApplication).appComponent.registrationComponent()
                 .create()
@@ -39,4 +40,9 @@ class RegistrationContainerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_registration_container, container, false)
 
+    override fun onResume() {
+        super.onResume()
+        val callback = requireActivity() as ToolbarCallback
+        callback.hideToolbar(false)
+    }
 }

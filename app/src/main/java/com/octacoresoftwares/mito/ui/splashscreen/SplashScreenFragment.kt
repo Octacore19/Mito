@@ -1,5 +1,6 @@
 package com.octacoresoftwares.mito.ui.splashscreen
 
+import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -13,22 +14,28 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.octacoresoftwares.mito.R
+import com.octacoresoftwares.mito.databinding.FragmentSplashScreenBinding
+import com.octacoresoftwares.mito.ui.container.ToolbarCallback
 
 
 class SplashScreenFragment : Fragment() {
 
-    private lateinit var icon: ImageView
+    private lateinit var binding: FragmentSplashScreenBinding
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback = requireActivity() as ToolbarCallback
+        callback.hideToolbar(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_splash_screen, container, false)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        icon = view.findViewById(R.id.mito_logo)
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_splash_screen, container, false)
+        binding = FragmentSplashScreenBinding.bind(view)
+        return binding.root
     }
 
     override fun onStart() {
@@ -44,6 +51,6 @@ class SplashScreenFragment : Fragment() {
         animation.duration = 2500
         animation.repeatCount = 1
         animation.repeatMode = Animation.REVERSE
-        icon.startAnimation(animation)
+        binding.mitoLogo.startAnimation(animation)
     }
 }

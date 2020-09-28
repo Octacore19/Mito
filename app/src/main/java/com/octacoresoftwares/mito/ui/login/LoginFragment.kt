@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import com.octacoresoftwares.mito.MitoApplication
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentLoginBinding
+import com.octacoresoftwares.mito.ui.container.ToolbarCallback
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
@@ -61,5 +62,11 @@ class LoginFragment : Fragment() {
                 viewModel.error.value = null
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val callback = requireActivity() as ToolbarCallback
+        callback.hideToolbar(false)
     }
 }

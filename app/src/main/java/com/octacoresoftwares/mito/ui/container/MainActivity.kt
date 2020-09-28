@@ -1,15 +1,32 @@
 package com.octacoresoftwares.mito.ui.container
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.octacoresoftwares.mito.R
+import com.octacoresoftwares.mito.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ToolbarCallback {
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun hideToolbar(value: Boolean) {
+        if (value) {
+            binding.toolbar.visibility = View.GONE
+        } else {
+            binding.toolbar.visibility = View.VISIBLE
+        }
     }
 
     override fun onBackPressed() {
@@ -44,4 +61,8 @@ class MainActivity : AppCompatActivity() {
     private fun containerNavController() = findNavController(R.id.container_host_fragment)
 
     private fun registrationNavController() = findNavController(R.id.registration_container_host_fragment)
+}
+
+interface ToolbarCallback {
+    fun hideToolbar(value: Boolean)
 }

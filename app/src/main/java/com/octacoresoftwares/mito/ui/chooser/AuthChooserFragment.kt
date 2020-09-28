@@ -1,5 +1,6 @@
 package com.octacoresoftwares.mito.ui.chooser
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentAuthChooserBinding
+import com.octacoresoftwares.mito.ui.container.ToolbarCallback
 
 class AuthChooserFragment : Fragment() {
 
@@ -35,5 +37,11 @@ class AuthChooserFragment : Fragment() {
             val action = AuthChooserFragmentDirections.actionNavigationChooserToNavigationRegistration()
             findNavController().navigate(action)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val callback = requireActivity() as ToolbarCallback
+        callback.hideToolbar(true)
     }
 }
