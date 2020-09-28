@@ -1,5 +1,6 @@
 package com.octacoresoftwares.mito.ui.registration
 
+import android.util.Log
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
@@ -18,6 +19,8 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
     ObservableViewModel() {
 
     val moveNameToNext = MutableLiveData<Boolean>()
+    val success = MutableLiveData<FirebaseUser>()
+    val error = MutableLiveData<Exception>()
 
     @get: Bindable
     var userName = ""
@@ -92,13 +95,6 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
 
             createAccountButtonEnabled = enableNameNextButton()
         }
-
-    /*@get: Bindable
-    var userNameErrorEnabled = false
-        private set(value) {
-            field = value
-            notifyPropertyChanged(BR.userNameErrorEnabled)
-        }*/
 
     @get: Bindable
     var emailErrorEnabled = false
@@ -186,10 +182,11 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
             override fun onSuccess(success: Success<Any>) {
                 val user = success.data as FirebaseUser
                 updateUserName(user)
+                this@RegistrationViewModel.success.value = user
             }
 
             override fun onError(error: Error) {
-                TODO("Not yet implemented")
+                this@RegistrationViewModel.error.value = error.exception
             }
         })
     }
@@ -200,11 +197,11 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
         }
         repo.updateUsername(user, profileUpdate, object : Callback {
             override fun onSuccess(success: Success<Any>) {
-                TODO("Not yet implemented")
+                Log.i(TAG, "Update Success: ${user.email}")
             }
 
             override fun onError(error: Error) {
-                TODO("Not yet implemented")
+                this@RegistrationViewModel.error.value = error.exception
             }
         })
     }
@@ -215,3 +212,5 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
         else
             false
 }
+
+private const val TAG = "RegistrationVM"

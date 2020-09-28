@@ -27,6 +27,7 @@ class ContainerFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         userManager = (requireActivity().application as MitoApplication).appComponent.userManager()
+        userManager.initManager()
         super.onAttach(context)
     }
 
@@ -47,6 +48,16 @@ class ContainerFragment : Fragment() {
 
         val navView: BottomNavigationView = view.findViewById(R.id.nav_view)
         NavigationUI.setupWithNavController(navView, containerController)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        userManager.registerListeners()
+    }
+
+    override fun onPause() {
+        userManager.removeListeners()
+        super.onPause()
     }
 
     override fun onDetach() {

@@ -14,7 +14,7 @@ class LoginViewModel @Inject constructor(private val repo: LoginRepository) :
     ObservableViewModel() {
 
     val success = MutableLiveData<FirebaseUser>()
-    val error = MutableLiveData<Any>()
+    val error = MutableLiveData<Exception>()
 
     @get: Bindable
     var userEmail = ""

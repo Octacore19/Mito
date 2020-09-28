@@ -1,7 +1,6 @@
 package com.octacoresoftwares.mito.ui.registration.di
 
 import com.octacoresoftwares.mito.di.RegistrationScope
-import com.octacoresoftwares.mito.ui.registration.RegistrationContainerFragment
 import com.octacoresoftwares.mito.ui.registration.fragments.CreateAccountFragment
 import dagger.Subcomponent
 

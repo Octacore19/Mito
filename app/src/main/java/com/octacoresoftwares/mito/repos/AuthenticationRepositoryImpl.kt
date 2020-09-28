@@ -4,7 +4,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.octacoresoftwares.mito.di.RegistrationScope
-import com.octacoresoftwares.mito.models.Result
 import com.octacoresoftwares.mito.models.Result.*
 import javax.inject.Inject
 
@@ -53,17 +52,20 @@ class RegistrationRepositoryImpl @Inject constructor(private val auth: FirebaseA
         }
     }
 
-    override fun updateUsername(user: FirebaseUser, profileUpdate: UserProfileChangeRequest, callback: Callback) {
-        user.updateProfile(profileUpdate).addOnCompleteListener {
-            if (it.isSuccessful) {
-                val res = it.result
-                if (res != null)
-                    callback.onSuccess(Success(res))
-            } else {
-                val e = it.exception
-                if (e != null)
-                    callback.onError(Result.Error(e))
+    override fun updateUsername(
+        user: FirebaseUser,
+        profileUpdate: UserProfileChangeRequest,
+        callback: Callback
+    ) {
+        user.updateProfile(profileUpdate)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    callback.onSuccess(Success(0))
+                } else {
+                    val e = it.exception
+                    if (e != null)
+                        callback.onError(Error(e))
+                }
             }
-        }
     }
 }

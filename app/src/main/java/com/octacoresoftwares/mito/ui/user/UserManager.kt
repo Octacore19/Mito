@@ -11,19 +11,61 @@ class UserManager @Inject constructor(
     private val auth: FirebaseAuth,
     private val userComponentFactory: UserComponent.Factory
 ) {
-    val currentUser: FirebaseUser?
-        get() = auth.currentUser
+    var currentUser: FirebaseUser? = null
+    var userComponent: UserComponent? = null
 
-    val userComponent: UserComponent?
-        get() {
-            return if (currentUser != null) {
-                userComponentFactory.create()
-            } else null
-        }
+    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
+    private lateinit var idTokenListener: FirebaseAuth.IdTokenListener
 
     fun isUserLoggedIn() = userComponent != null
 
+    fun initManager() {
+        currentUser = auth.currentUser
+        if (currentUser != null) {
+            userCurrentlyLoggedIn()
+        }
+
+        initListeners()
+    }
+
+    fun registerListeners() {
+        auth.addAuthStateListener(authStateListener)
+        auth.addIdTokenListener(idTokenListener)
+    }
+
+    fun removeListeners() {
+        auth.removeAuthStateListener(authStateListener)
+        auth.removeIdTokenListener(idTokenListener)
+    }
+
     fun logUserOut() {
         auth.signOut()
+        userComponent = null
+    }
+
+    private fun initListeners() {
+        authStateListener = FirebaseAuth.AuthStateListener {
+            val user = it.currentUser
+            if (user != null) {
+                currentUser = user
+                userCurrentlyLoggedIn()
+            } else {
+                logUserOut()
+            }
+        }
+
+        idTokenListener = FirebaseAuth.IdTokenListener {
+            val user = it.currentUser
+            if (user != null) {
+                currentUser = user
+                userCurrentlyLoggedIn()
+            } else {
+                logUserOut()
+            }
+        }
+    }
+
+    private fun userCurrentlyLoggedIn() {
+        userComponent = userComponentFactory.create()
     }
 }

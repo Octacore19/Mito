@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import androidx.navigation.findNavController
 import com.octacoresoftwares.mito.MitoApplication
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentLoginBinding
@@ -50,33 +49,15 @@ class LoginFragment : Fragment() {
     private fun attachObservers() {
         viewModel.success.observe({ lifecycle }) {
             if (it != null) {
-                Toast.makeText(
-                    requireContext(),
-                    "UserEmail: ${it.email}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val action = LoginFragmentDirections.actionNavigationLoginToNavigationMain()
+                requireActivity().findNavController(R.id.app_host_fragment).navigate(action)
                 viewModel.success.value = null
             }
         }
 
         viewModel.error.observe({ lifecycle }) {
             if (it != null) {
-                when (it) {
-                    is FirebaseAuthInvalidUserException -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Error: ${it.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    else -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Error: ${(it as Exception).message}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
+                Toast.makeText(requireContext(), "Error: ${it.message}", Toast.LENGTH_LONG).show()
                 viewModel.error.value = null
             }
         }
