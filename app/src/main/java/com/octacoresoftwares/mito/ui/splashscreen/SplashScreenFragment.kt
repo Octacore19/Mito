@@ -26,6 +26,7 @@ class SplashScreenFragment : Fragment() {
         super.onAttach(context)
         val callback = requireActivity() as ToolbarCallback
         callback.hideToolbar(true)
+        callback.displayNavigationIcon(false)
     }
 
     override fun onCreateView(

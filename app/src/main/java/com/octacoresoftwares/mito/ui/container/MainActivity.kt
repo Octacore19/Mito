@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity(), ToolbarCallback {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            if (binding.toolbar.navigationIcon != null) {
+                onBackPressed()
+            }
         }
     }
 
@@ -26,6 +28,14 @@ class MainActivity : AppCompatActivity(), ToolbarCallback {
             binding.toolbar.visibility = View.GONE
         } else {
             binding.toolbar.visibility = View.VISIBLE
+        }
+    }
+
+    override fun displayNavigationIcon(value: Boolean) {
+        if (value) {
+            binding.toolbar.setNavigationIcon(R.drawable.ic_back)
+        } else {
+            binding.toolbar.navigationIcon = null
         }
     }
 
@@ -65,4 +75,5 @@ class MainActivity : AppCompatActivity(), ToolbarCallback {
 
 interface ToolbarCallback {
     fun hideToolbar(value: Boolean)
+    fun displayNavigationIcon(value: Boolean)
 }

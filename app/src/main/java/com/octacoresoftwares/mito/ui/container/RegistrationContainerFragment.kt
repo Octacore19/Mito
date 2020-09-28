@@ -44,5 +44,6 @@ class RegistrationContainerFragment : Fragment() {
         super.onResume()
         val callback = requireActivity() as ToolbarCallback
         callback.hideToolbar(false)
+        callback.displayNavigationIcon(true)
     }
 }

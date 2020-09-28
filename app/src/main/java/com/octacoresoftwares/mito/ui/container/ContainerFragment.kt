@@ -53,7 +53,8 @@ class ContainerFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         val callback = requireActivity() as ToolbarCallback
-        callback.hideToolbar(true)
+        callback.hideToolbar(false)
+        callback.displayNavigationIcon(false)
 
         userManager.registerListeners()
     }
