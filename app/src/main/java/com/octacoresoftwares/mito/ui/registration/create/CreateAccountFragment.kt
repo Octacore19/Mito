@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.registration.fragments
+package com.octacoresoftwares.mito.ui.registration.create
 
 import android.content.Context
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentCreateAccountBinding
 import com.octacoresoftwares.mito.ui.container.RegistrationContainerFragment
-import com.octacoresoftwares.mito.ui.registration.RegistrationViewModel
 import javax.inject.Inject
 
 class CreateAccountFragment : Fragment() {
@@ -24,13 +23,13 @@ class CreateAccountFragment : Fragment() {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
-    val viewModel by viewModels<RegistrationViewModel>({ parentFragment }) { factory }
+    val viewModel by viewModels<CreateAccountViewModel>({ parentFragment }) { factory }
 
     private lateinit var binding: FragmentCreateAccountBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        parentFragment.registrationComponent.inject(this)
+        parentFragment.registrationComponent.createAccountComponent().create().inject(this)
     }
 
     override fun onCreateView(
@@ -50,7 +49,8 @@ class CreateAccountFragment : Fragment() {
 
         viewModel.success.observe({ lifecycle }) { user ->
             if (user != null) {
-                val action = CreateAccountFragmentDirections.actionNavigationNameToNavigationFinish()
+                val action =
+                    CreateAccountFragmentDirections.actionNavigationNameToNavigationFinish()
                 parentFragment.containerController.navigate(action)
                 viewModel.success.value = null
             }

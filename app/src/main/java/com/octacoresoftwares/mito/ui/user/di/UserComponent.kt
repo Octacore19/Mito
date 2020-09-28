@@ -1,5 +1,6 @@
 package com.octacoresoftwares.mito.ui.user.di
 
+import com.octacoresoftwares.mito.di.LoggedInUser
 import com.octacoresoftwares.mito.ui.user.chats.di.ChatsComponent
 import com.octacoresoftwares.mito.ui.user.matches.di.MatchesComponent
 import com.octacoresoftwares.mito.ui.user.nearby.di.NearbyComponent
@@ -7,6 +8,7 @@ import com.octacoresoftwares.mito.ui.user.profile.di.ProfileComponent
 import dagger.Module
 import dagger.Subcomponent
 
+@LoggedInUser
 @Subcomponent(modules = [UserSubComponents::class])
 interface UserComponent {
 

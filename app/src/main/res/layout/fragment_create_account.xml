@@ -6,13 +6,13 @@
     <data>
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.registration.RegistrationViewModel" />
+            type="com.octacoresoftwares.mito.ui.registration.create.CreateAccountViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.registration.fragments.CreateAccountFragment">
+        tools:context=".ui.registration.create.CreateAccountFragment">
 
         <include
             android:id="@+id/content"

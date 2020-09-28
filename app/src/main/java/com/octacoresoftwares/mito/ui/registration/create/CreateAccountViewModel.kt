@@ -1,4 +1,4 @@
-package com.octacoresoftwares.mito.ui.registration
+package com.octacoresoftwares.mito.ui.registration.create
 
 import android.util.Log
 import androidx.databinding.Bindable
@@ -6,19 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.octacoresoftwares.mito.BR
-import com.octacoresoftwares.mito.di.RegistrationScope
 import com.octacoresoftwares.mito.models.Result
-import com.octacoresoftwares.mito.models.Result.*
 import com.octacoresoftwares.mito.repos.RegistrationRepository
 import com.octacoresoftwares.mito.utils.ObservableViewModel
 import com.octacoresoftwares.mito.utils.isValidEmail
 import javax.inject.Inject
 
-@RegistrationScope
-class RegistrationViewModel @Inject constructor(private val repo: RegistrationRepository) :
-    ObservableViewModel() {
+class CreateAccountViewModel @Inject constructor(private val repo: RegistrationRepository): ObservableViewModel() {
 
-    val moveNameToNext = MutableLiveData<Boolean>()
     val success = MutableLiveData<FirebaseUser>()
     val error = MutableLiveData<Exception>()
 
@@ -139,27 +134,6 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
         }
 
     @get: Bindable
-    var firstName = ""
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.firstName)
-        }
-
-    @get: Bindable
-    var otherNames = ""
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.otherNames)
-        }
-
-    @get: Bindable
-    var lastName = ""
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.lastName)
-        }
-
-    @get: Bindable
     var layoutVisible = true
         private set(value) {
             field = value
@@ -173,20 +147,16 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
             notifyPropertyChanged(BR.createAccountButtonEnabled)
         }
 
-    fun moveNameToNext() {
-        moveNameToNext.value = true
-    }
-
     fun createAccount() {
-        repo.register(userEmail.trim(), userPassword.trim(), object : Callback {
-            override fun onSuccess(success: Success<Any>) {
+        repo.register(userEmail.trim(), userPassword.trim(), object : Result.Callback {
+            override fun onSuccess(success: Result.Success<Any>) {
                 val user = success.data as FirebaseUser
                 updateUserName(user)
-                this@RegistrationViewModel.success.value = user
+                this@CreateAccountViewModel.success.value = user
             }
 
-            override fun onError(error: Error) {
-                this@RegistrationViewModel.error.value = error.exception
+            override fun onError(error: Result.Error) {
+                this@CreateAccountViewModel.error.value = error.exception
             }
         })
     }
@@ -195,13 +165,13 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
         val profileUpdate = userProfileChangeRequest {
             displayName = userName
         }
-        repo.updateUsername(user, profileUpdate, object : Callback {
-            override fun onSuccess(success: Success<Any>) {
+        repo.updateUsername(user, profileUpdate, object : Result.Callback {
+            override fun onSuccess(success: Result.Success<Any>) {
                 Log.i(TAG, "Update Success: ${user.email}")
             }
 
-            override fun onError(error: Error) {
-                this@RegistrationViewModel.error.value = error.exception
+            override fun onError(error: Result.Error) {
+                this@CreateAccountViewModel.error.value = error.exception
             }
         })
     }
@@ -213,4 +183,4 @@ class RegistrationViewModel @Inject constructor(private val repo: RegistrationRe
             false
 }
 
-private const val TAG = "RegistrationVM"
+private const val TAG = "CreateAccountVM"
