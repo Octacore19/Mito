@@ -5,6 +5,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.octacoresoftwares.mito.di.RegistrationScope
 import com.octacoresoftwares.mito.models.Result.*
+import com.octacoresoftwares.mito.models.User
+import com.octacoresoftwares.mito.utils.UserRegistrationManager
 import javax.inject.Inject
 
 class LoginRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : LoginRepository {
@@ -30,8 +32,10 @@ class LoginRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : 
 }
 
 @RegistrationScope
-class RegistrationRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) :
-    RegistrationRepository {
+class RegistrationRepositoryImpl @Inject constructor(
+    private val auth: FirebaseAuth,
+    private val manager: UserRegistrationManager
+) : RegistrationRepository {
 
     override fun register(email: String, password: String, callback: Callback) {
         try {
@@ -67,5 +71,17 @@ class RegistrationRepositoryImpl @Inject constructor(private val auth: FirebaseA
                         callback.onError(Error(e))
                 }
             }
+    }
+
+    override fun addUser(user: User, callback: Callback) {
+        manager.addNewUser(user, object : Callback {
+            override fun onSuccess(success: Success<Any>) {
+                callback.onSuccess(success)
+            }
+
+            override fun onError(error: Error) {
+                callback.onError(error)
+            }
+        })
     }
 }

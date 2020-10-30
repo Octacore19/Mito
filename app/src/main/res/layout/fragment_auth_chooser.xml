@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        tools:context=".ui.chooser.AuthChooserFragment">
+        tools:context=".screens.chooser.AuthChooserFragment">
 
         <ImageView
             android:id="@+id/imageView2"

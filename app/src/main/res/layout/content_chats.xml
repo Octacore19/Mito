@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.user.chats.ChatsViewModel" />
+            type="com.octacoresoftwares.mito.screens.user.chats.ChatsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,13 +6,13 @@
     <data>
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.user.matches.MatchesViewModel" />
+            type="com.octacoresoftwares.mito.screens.user.matches.MatchesViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.user.matches.MatchesFragment">
+        tools:context=".screens.user.matches.MatchesFragment">
 
         <include
             android:id="@+id/content"

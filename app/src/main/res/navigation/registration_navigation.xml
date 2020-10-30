@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_create_account"
-        android:name="com.octacoresoftwares.mito.ui.registration.create.CreateAccountFragment"
+        android:name="com.octacoresoftwares.mito.screens.registration.create.CreateAccountFragment"
         android:label="@string/title_create_account"
         tools:layout="@layout/fragment_create_account">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_finish"
-        android:name="com.octacoresoftwares.mito.ui.registration.name.NameRegistrationFragment"
+        android:name="com.octacoresoftwares.mito.screens.registration.name.NameRegistrationFragment"
         android:label="@string/title_finish_registration"
         tools:layout="@layout/fragment_name_registration" />
 </navigation>

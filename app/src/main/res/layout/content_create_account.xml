@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.registration.create.CreateAccountViewModel" />
+            type="com.octacoresoftwares.mito.screens.registration.create.CreateAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

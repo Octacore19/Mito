@@ -7,6 +7,7 @@ import com.google.firebase.ktx.Firebase
 import com.octacoresoftwares.mito.di.DaggerAppComponent
 
 class MitoApplication: Application() {
+
     override fun onCreate() {
         super.onCreate()
         initTheme()

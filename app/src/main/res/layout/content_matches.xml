@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.user.matches.MatchesViewModel" />
+            type="com.octacoresoftwares.mito.screens.user.matches.MatchesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_splash_screen"
-        android:name="com.octacoresoftwares.mito.ui.splashscreen.SplashScreenFragment"
+        android:name="com.octacoresoftwares.mito.screens.splashscreen.SplashScreenFragment"
         android:label="@string/title_splashscreen"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_main"
-        android:name="com.octacoresoftwares.mito.ui.container.ContainerFragment"
+        android:name="com.octacoresoftwares.mito.screens.container.ContainerFragment"
         android:label="@string/title_container"
         tools:layout="@layout/fragment_container">
         <action
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/navigation_registration"
-        android:name="com.octacoresoftwares.mito.ui.container.RegistrationContainerFragment"
+        android:name="com.octacoresoftwares.mito.screens.container.RegistrationContainerFragment"
         android:label="@string/title_registration"
         tools:layout="@layout/fragment_registration_container">
         <action
@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.octacoresoftwares.mito.ui.login.LoginFragment"
+        android:name="com.octacoresoftwares.mito.screens.login.LoginFragment"
         android:label="@string/title_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_chooser"
-        android:name="com.octacoresoftwares.mito.ui.chooser.AuthChooserFragment"
+        android:name="com.octacoresoftwares.mito.screens.chooser.AuthChooserFragment"
         android:label="@string/title_chooser"
         tools:layout="@layout/fragment_auth_chooser">
         <action

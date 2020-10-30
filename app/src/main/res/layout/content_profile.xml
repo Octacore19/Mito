@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.user.profile.ProfileViewModel" />
+            type="com.octacoresoftwares.mito.screens.user.profile.ProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

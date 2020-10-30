@@ -1,10 +1,10 @@
 package com.octacoresoftwares.mito.di
 
 import com.google.firebase.auth.FirebaseAuth
-import com.octacoresoftwares.mito.ui.login.di.LoginComponent
-import com.octacoresoftwares.mito.ui.registration.di.RegistrationComponent
-import com.octacoresoftwares.mito.ui.user.UserManager
-import com.octacoresoftwares.mito.ui.user.di.UserComponent
+import com.octacoresoftwares.mito.screens.login.di.LoginComponent
+import com.octacoresoftwares.mito.screens.registration.di.RegistrationComponent
+import com.octacoresoftwares.mito.screens.user.UserManager
+import com.octacoresoftwares.mito.screens.user.di.UserComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module

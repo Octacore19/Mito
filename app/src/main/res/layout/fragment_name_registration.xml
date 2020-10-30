@@ -7,13 +7,13 @@
 
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.registration.name.NameRegistrationViewModel" />
+            type="com.octacoresoftwares.mito.screens.registration.name.NameRegistrationViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.registration.name.NameRegistrationFragment">
+        tools:context=".screens.registration.name.NameRegistrationFragment">
 
         <include
             android:id="@+id/content"

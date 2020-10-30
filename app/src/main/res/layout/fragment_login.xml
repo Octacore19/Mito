@@ -6,13 +6,13 @@
     <data>
         <variable
             name="vm"
-            type="com.octacoresoftwares.mito.ui.login.LoginViewModel" />
+            type="com.octacoresoftwares.mito.screens.login.LoginViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.login.LoginFragment">
+        tools:context=".screens.login.LoginFragment">
 
         <include android:id="@+id/content"
             layout="@layout/content_login"
