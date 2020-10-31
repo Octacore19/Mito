@@ -7,6 +7,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.octacoresoftwares.mito.BR
 import com.octacoresoftwares.mito.models.Result
+import com.octacoresoftwares.mito.models.Result.Callback
+import com.octacoresoftwares.mito.models.Result.Error
+import com.octacoresoftwares.mito.models.Result.Success
 import com.octacoresoftwares.mito.repos.RegistrationRepository
 import com.octacoresoftwares.mito.utils.ObservableViewModel
 import com.octacoresoftwares.mito.utils.isValidEmail
@@ -148,30 +151,37 @@ class CreateAccountViewModel @Inject constructor(private val repo: RegistrationR
         }
 
     fun createAccount() {
-        repo.register(userEmail.trim(), userPassword.trim(), object : Result.Callback {
-            override fun onSuccess(success: Result.Success<Any>) {
+        repo.register(userEmail.trim(), userPassword.trim(), object : Callback {
+            override fun onSuccess(success: Success<Any>) {
                 val user = success.data as FirebaseUser
-                updateUserName(user)
-                this@CreateAccountViewModel.success.value = user
+                updateUserName(user, object : Callback {
+                    override fun onSuccess(success: Success<Any>) {
+                        this@CreateAccountViewModel.success.value = user
+                    }
+
+                    override fun onError(error: Error) {
+                        this@CreateAccountViewModel.error.value = error.exception
+                    }
+                })
             }
 
-            override fun onError(error: Result.Error) {
+            override fun onError(error: Error) {
                 this@CreateAccountViewModel.error.value = error.exception
             }
         })
     }
 
-    private fun updateUserName(user: FirebaseUser) {
+    private fun updateUserName(user: FirebaseUser, callback: Callback) {
         val profileUpdate = userProfileChangeRequest {
             displayName = userName
         }
-        repo.updateUsername(user, profileUpdate, object : Result.Callback {
-            override fun onSuccess(success: Result.Success<Any>) {
-                Log.i(TAG, "Update Success: ${user.email}")
+        repo.updateUsername(user, profileUpdate, object : Callback {
+            override fun onSuccess(success: Success<Any>) {
+                callback.onSuccess(success)
             }
 
-            override fun onError(error: Result.Error) {
-                this@CreateAccountViewModel.error.value = error.exception
+            override fun onError(error: Error) {
+                callback.onError(error)
             }
         })
     }

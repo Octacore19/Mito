@@ -3,6 +3,7 @@ package com.octacoresoftwares.mito.screens.registration.name
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import com.octacoresoftwares.mito.BR
+import com.octacoresoftwares.mito.models.User
 import com.octacoresoftwares.mito.repos.RegistrationRepository
 import com.octacoresoftwares.mito.utils.ObservableViewModel
 import javax.inject.Inject
@@ -10,6 +11,7 @@ import javax.inject.Inject
 class NameRegistrationViewModel @Inject constructor(private val repo: RegistrationRepository): ObservableViewModel() {
 
     val moveNameToNext = MutableLiveData<Boolean>()
+    var user: User? = null
 
     @get: Bindable
     var firstName = ""

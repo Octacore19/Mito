@@ -4,6 +4,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.octacoresoftwares.mito.di.RegistrationScope
 import com.octacoresoftwares.mito.screens.registration.create.di.CreateAccountComponent
 import com.octacoresoftwares.mito.screens.registration.name.di.NameRegistrationComponent
+import dagger.BindsInstance
 import dagger.Module
 import dagger.Subcomponent
 import java.io.Serializable
@@ -14,7 +15,7 @@ interface RegistrationComponent: Serializable {
 
     @Subcomponent.Factory
     interface Factory {
-        fun create(database: FirebaseFirestore): RegistrationComponent
+        fun create(@BindsInstance database: FirebaseFirestore): RegistrationComponent
     }
 
     fun createAccountComponent(): CreateAccountComponent.Factory

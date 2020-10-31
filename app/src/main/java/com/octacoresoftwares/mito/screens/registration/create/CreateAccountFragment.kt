@@ -50,7 +50,7 @@ class CreateAccountFragment : Fragment() {
         viewModel.success.observe({ lifecycle }) { user ->
             if (user != null) {
                 val action =
-                    CreateAccountFragmentDirections.actionNavigationNameToNavigationFinish()
+                    CreateAccountFragmentDirections.actionNavigationCreateAccountToNavigationNameRegistration(user)
                 parentFragment.containerController.navigate(action)
                 viewModel.success.value = null
             }

@@ -20,6 +20,7 @@
     <string name="first_name">First Name</string>
     <string name="text_next">Next</string>
     <string name="title_finish_registration">Finish Registration</string>
+    <string name="title_name_registration">Register Name</string>
     <string name="title_create_account">Create Account</string>
     <string name="create_new_account">Create new account</string>
     <string name="user_name">Username</string>
