@@ -34,59 +34,54 @@ android {
         jvmTarget = Versions.jvm
     }
     buildFeatures {
-        dataBinding true
+        dataBinding DefaultConfigs.dataBinding
     }
 }
 
 dependencies {
-    def glide_version = "4.11.0"
-    def room_version = "2.2.5"
-    def coroutine_version = "2.3.0-beta01"
-    def work_version = "2.4.0"
-    def dagger_version = "2.27"
 
     implementation(
             fileTree(dir: "libs", include: ["*.jar"]),
+            platform(FirebaseDependencies.platformBOM),
             CoreDependencies.kotlinLib,
             CoreDependencies.androidxCore,
             CoreDependencies.androidxAppCompat,
             CoreDependencies.materialDesign,
             CoreDependencies.legacySupport,
-            NavigationArchDependencies.navFragKtx,
-            NavigationArchDependencies.navUiKtx,
-            NavigationArchDependencies.navDynamicFeatures,
-            platform("com.google.firebase:firebase-bom:26.0.0"),
-            "com.google.firebase:firebase-analytics-ktx",
-            "com.google.firebase:firebase-auth-ktx",
-            "com.google.firebase:firebase-firestore-ktx",
-            "androidx.work:work-runtime-ktx:$work_version",
-            "com.google.dagger:dagger:$dagger_version",
-            "androidx.lifecycle:lifecycle-runtime-ktx:$coroutine_version",
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutine_version",
-            "androidx.lifecycle:lifecycle-livedata-ktx:$coroutine_version",
-            "androidx.room:room-ktx:$room_version",
-            "androidx.room:room-runtime:$room_version",
-            "com.github.bumptech.glide:glide:$glide_version",
-            "de.hdodenhof:circleimageview:3.0.1",
-            "androidx.lifecycle:lifecycle-extensions:2.2.0",
-            "androidx.cardview:cardview:1.0.0",
-            "androidx.recyclerview:recyclerview:1.1.0",
-            "androidx.constraintlayout:constraintlayout:2.0.4"
+            CoreDependencies.lifecycle,
+            AndroidArchDependencies.navFragKtx,
+            AndroidArchDependencies.navUiKtx,
+            AndroidArchDependencies.navDynamicFeatures,
+            AndroidArchDependencies.work,
+            AndroidArchDependencies.dagger,
+            AndroidArchDependencies.room,
+            AndroidArchDependencies.roomRuntime,
+            FirebaseDependencies.analytics,
+            FirebaseDependencies.auth,
+            FirebaseDependencies.firestore,
+            CoroutineDependencies.runtime,
+            CoroutineDependencies.viewModel,
+            CoroutineDependencies.liveData,
+            ViewsDependencies.cardView,
+            ViewsDependencies.recyclerView,
+            ViewsDependencies.constraintLayout,
+            ViewsDependencies.circleImageView,
+            OtherUtilityDependencies.glide
     )
     kapt(
-            "com.google.dagger:dagger-compiler:$dagger_version",
-            "androidx.room:room-compiler:$room_version",
-            "com.github.bumptech.glide:compiler:$glide_version"
+            AndroidArchDependencies.daggerCompiler,
+            AndroidArchDependencies.roomCompiler,
+            OtherUtilityDependencies.glideCompiler
     )
     annotationProcessor(
-            "androidx.room:room-compiler:$room_version",
-            "com.github.bumptech.glide:compiler:$glide_version"
+            AndroidArchDependencies.roomCompiler,
+            OtherUtilityDependencies.glideCompiler
     )
 
     testImplementation(
             TestDependencies.jUnit,
-            "org.mockito:mockito-core:3.3.1",
-            "android.arch.core:core-testing:1.1.1"
+            TestDependencies.mockitoCore,
+            TestDependencies.coreTesting
     )
 
     androidTestImplementation(

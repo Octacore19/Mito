@@ -40,9 +40,9 @@ dependencies {
             CoreDependencies.androidxAppCompat,
             CoreDependencies.materialDesign,
             CoreDependencies.legacySupport,
-            NavigationArchDependencies.navFragKtx,
-            NavigationArchDependencies.navUiKtx,
-            NavigationArchDependencies.navDynamicFeatures
+            AndroidArchDependencies.navFragKtx,
+            AndroidArchDependencies.navUiKtx,
+            AndroidArchDependencies.navDynamicFeatures
     )
 
     testImplementation(
