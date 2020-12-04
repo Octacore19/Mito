@@ -13,7 +13,7 @@ class UserRegistrationManager @Inject constructor(private val db: FirebaseFirest
 
     fun addNewUser(user: User, callback: Callback) {
         db.collection(USERS_COLLECTION)
-            .document(user.id)
+            .document(user.id!!)
             .set(user)
             .addOnSuccessListener {
                 callback.onSuccess(Result.Success(it))

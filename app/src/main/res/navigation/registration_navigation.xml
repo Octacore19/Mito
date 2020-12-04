@@ -23,5 +23,17 @@
         <argument
             android:name="user"
             app:argType="com.google.firebase.auth.FirebaseUser" />
+        <action
+            android:id="@+id/action_navigation_name_registration_to_navigation_other_information"
+            app:destination="@id/navigation_other_information" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_other_information"
+        android:name="com.octacoresoftwares.mito.screens.registration.other.OtherInformationFragment"
+        android:label="@string/title_other_information"
+        tools:layout="@layout/fragment_other_information">
+        <argument
+            android:name="user"
+            app:argType="com.octacoresoftwares.mito.models.User" />
     </fragment>
 </navigation>

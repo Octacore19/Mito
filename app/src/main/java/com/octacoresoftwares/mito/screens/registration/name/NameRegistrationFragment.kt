@@ -2,20 +2,18 @@ package com.octacoresoftwares.mito.screens.registration.name
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.Timestamp
 import com.octacoresoftwares.mito.R
-import com.octacoresoftwares.mito.databinding.FragmentCreateAccountBinding
 import com.octacoresoftwares.mito.databinding.FragmentNameRegistrationBinding
 import com.octacoresoftwares.mito.models.User
 import com.octacoresoftwares.mito.screens.container.RegistrationContainerFragment
-import com.octacoresoftwares.mito.screens.registration.create.CreateAccountViewModel
 import javax.inject.Inject
 
 class NameRegistrationFragment : Fragment() {
@@ -29,8 +27,7 @@ class NameRegistrationFragment : Fragment() {
 
     val viewModel by viewModels<NameRegistrationViewModel>({ parentFragment }) { factory }
 
-    private
-    lateinit var binding: FragmentNameRegistrationBinding
+    private lateinit var binding: FragmentNameRegistrationBinding
 
     private val args: NameRegistrationFragmentArgs by navArgs()
 
@@ -53,7 +50,24 @@ class NameRegistrationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         args.user.let {
-            viewModel.user = User(id = it.uid, userName = it.displayName!!, email = it.email!!, createdAt = Timestamp.now())
+            viewModel.user = User(
+                id = it.uid,
+                userName = it.displayName!!,
+                email = it.email!!
+            )
+        }
+
+        viewModel.moveNameToNext.observe({ lifecycle }) { value ->
+            if (value) {
+                viewModel.user?.let {
+                    val action =
+                        NameRegistrationFragmentDirections.actionNavigationNameRegistrationToNavigationOtherInformation(
+                            it
+                        )
+                    parentFragment.containerController.navigate(action)
+                    viewModel.moveNameToNext.value = false
+                }
+            }
         }
     }
 }
