@@ -39,15 +39,6 @@ dependencies {
 
     implementation(
             fileTree(dir: "libs", include: ["*.jar"]),
-            CoreDependencies.kotlinLib,
-            CoreDependencies.androidxCore,
-            CoreDependencies.androidxAppCompat,
-            CoreDependencies.materialDesign,
-            CoreDependencies.legacySupport,
-            ViewsDependencies.constraintLayout,
-            AndroidArchDependencies.navFragKtx,
-            AndroidArchDependencies.navUiKtx,
-            AndroidArchDependencies.navDynamicFeatures,
             project(ProjectModules.core)
     )
 

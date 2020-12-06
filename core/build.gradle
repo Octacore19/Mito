@@ -19,15 +19,6 @@ android {
 
         testInstrumentationRunner DefaultConfigs.testInstrumentationRunner
         consumerProguardFiles DefaultConfigs.consumerProguard
-
-        /*javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += [
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true",
-                        "room.expandProjection":"true"]
-            }
-        }*/
     }
 
     buildTypes {
@@ -51,13 +42,6 @@ android {
 dependencies {
 
     api(
-            AndroidArchDependencies.dagger,
-            AndroidArchDependencies.daggerAndroidSupport
-    )
-
-    implementation(
-            fileTree(dir: "libs", include: ["*.jar"]),
-            platform(FirebaseDependencies.platformBOM),
             CoreDependencies.kotlinLib,
             CoreDependencies.androidxCore,
             CoreDependencies.androidxAppCompat,
@@ -67,20 +51,28 @@ dependencies {
             AndroidArchDependencies.navFragKtx,
             AndroidArchDependencies.navUiKtx,
             AndroidArchDependencies.navDynamicFeatures,
-            AndroidArchDependencies.work,
-            AndroidArchDependencies.room,
-            AndroidArchDependencies.roomRuntime,
-            FirebaseDependencies.analytics,
-            FirebaseDependencies.auth,
-            FirebaseDependencies.firestore,
+            AndroidArchDependencies.dagger,
+            AndroidArchDependencies.daggerAndroidSupport,
             CoroutineDependencies.runtime,
             CoroutineDependencies.viewModel,
             CoroutineDependencies.liveData,
             ViewsDependencies.cardView,
             ViewsDependencies.recyclerView,
             ViewsDependencies.constraintLayout,
-            ViewsDependencies.circleImageView,
-            OtherUtilityDependencies.glide
+            ViewsDependencies.circleImageView
+    )
+
+    implementation(
+            fileTree(dir: "libs", include: ["*.jar"]),
+            platform(FirebaseDependencies.platformBOM),
+            AndroidArchDependencies.work,
+            AndroidArchDependencies.room,
+            AndroidArchDependencies.roomRuntime,
+            FirebaseDependencies.analytics,
+            FirebaseDependencies.auth,
+            FirebaseDependencies.firestore,
+            OtherUtilityDependencies.glide,
+            OtherUtilityDependencies.timber
     )
     kapt(
             AndroidArchDependencies.daggerCompiler,

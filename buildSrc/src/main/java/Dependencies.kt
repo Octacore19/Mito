@@ -32,6 +32,7 @@ object Versions {
     const val circleImageView = "3.0.1"
     const val mockito = "3.3.1"
     const val coreTesting = "1.1.1"
+    const val timber = "4.7.1"
 }
 
 object DefaultConfigs {
@@ -101,6 +102,7 @@ object FirebaseDependencies {
 object OtherUtilityDependencies {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 
 object CoroutineDependencies {

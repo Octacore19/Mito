@@ -13,7 +13,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import dagger.android.support.DaggerFragment
 
-abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Fragment() {
+abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: DaggerFragment() {
 
     abstract fun getViewModel(): V?
 
