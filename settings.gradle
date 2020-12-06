@@ -1,3 +1,5 @@
+include ':core'
+include ':main'
 include ':auth'
 include ':app'
 rootProject.name = "Mito"

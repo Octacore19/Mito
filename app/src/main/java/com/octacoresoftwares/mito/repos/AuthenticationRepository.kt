@@ -2,8 +2,9 @@ package com.octacoresoftwares.mito.repos
 
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.octacoresoftwares.mito.models.Result.Callback
-import com.octacoresoftwares.mito.models.User
+import com.octacoresoftwares.core.models.Result
+import com.octacoresoftwares.core.models.Result.Callback
+import com.octacoresoftwares.core.models.User
 
 interface LoginRepository {
     fun login(email: String, password: String, callback: Callback)

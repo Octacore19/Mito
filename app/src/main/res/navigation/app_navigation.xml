@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_splash_screen"
-        android:name="com.octacoresoftwares.mito.screens.splashscreen.SplashScreenFragment"
+        android:name="com.octacoresoftwares.mito.screens.SplashScreenFragment"
         android:label="@string/title_splashscreen"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -15,57 +15,29 @@
             app:destination="@id/navigation_main"
             app:popUpTo="@id/navigation_splash_screen"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_splash_screen_to_navigation_authentication"
+            app:destination="@id/navigation_authentication"
+            app:popUpTo="@id/navigation_splash_screen"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_main"
-        android:name="com.octacoresoftwares.mito.screens.container.ContainerFragment"
-        android:label="@string/title_container"
-        tools:layout="@layout/fragment_container">
+        android:name="com.octacoresoftwares.main.MainFragment"
+        android:label="@string/title_main"
+        tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_navigation_main_to_navigation_chooser"
-            app:destination="@id/navigation_chooser"
+            android:id="@+id/action_navigation_main_to_navigation_authentication"
+            app:destination="@id/navigation_authentication"
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_main"
             app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_registration"
-        android:name="com.octacoresoftwares.mito.screens.container.RegistrationContainerFragment"
-        android:label="@string/title_registration"
-        tools:layout="@layout/fragment_registration_container">
-        <action
-            android:id="@+id/action_navigation_registration_to_navigation_main"
-            app:destination="@id/navigation_main"
-            app:popUpTo="@id/navigation_registration"
-            app:popUpToInclusive="true" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_login"
-        android:name="com.octacoresoftwares.mito.screens.login.LoginFragment"
-        android:label="@string/title_login"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_navigation_login_to_navigation_main"
-            app:destination="@id/navigation_main"
-            app:popUpTo="@id/navigation_login"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_chooser"
-        android:name="com.octacoresoftwares.mito.screens.chooser.AuthChooserFragment"
-        android:label="@string/title_chooser"
-        tools:layout="@layout/fragment_auth_chooser">
-        <action
-            android:id="@+id/action_navigation_chooser_to_navigation_login"
-            app:destination="@id/navigation_login"
-            app:launchSingleTop="true" />
-
-        <action
-            android:id="@+id/action_navigation_chooser_to_navigation_registration"
-            app:destination="@id/navigation_registration"
-            app:launchSingleTop="true" />
-    </fragment>
+        android:id="@+id/navigation_authentication"
+        android:name="com.octacoresoftwares.auth.AuthenticationFragment"
+        android:label="@string/title_authentication"
+        tools:layout="@layout/fragment_authentication" />
 </navigation>

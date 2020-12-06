@@ -6,7 +6,7 @@ object Versions {
     const val versionName = "1.0"
     const val buildToolVersion = "30.0.0"
     const val kotlin = "1.4.20"
-    const val gradle = "4.0.1"
+    const val gradle = "4.1.1"
     const val jvm = "1.8"
 
     const val legacySupport = "1.0.0"
@@ -24,7 +24,7 @@ object Versions {
     const val navigation = "2.3.0"
     const val material = "1.2.1"
     const val glide = "4.11.0"
-    const val room = "2.2.5"
+    const val room = "2.3.0-alpha02"
     const val coroutine = "2.3.0-beta01"
     const val work = "2.4.0"
     const val dagger = "2.27"
@@ -59,6 +59,7 @@ object TestDependencies {
 
 object CoreDependencies {
     const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     const val androidxCore = "androidx.core:core-ktx:${Versions.androidxCore}"
     const val androidxAppCompat = "androidx.appcompat:appcompat:${Versions.androidxAppCompat}"
     const val materialDesign = "com.google.android.material:material:${Versions.material}"
@@ -86,6 +87,8 @@ object AndroidArchDependencies {
 
     const val dagger =  "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 }
 
 object FirebaseDependencies {
@@ -104,6 +107,12 @@ object CoroutineDependencies {
     const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.coroutine}"
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.coroutine}"
     const val liveData =  "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.coroutine}"
+}
+
+object ProjectModules {
+    const val auth = ":auth"
+    const val core = ":core"
+    const val main = ":main"
 }
 
 object NetworkDependencies {

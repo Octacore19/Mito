@@ -1,10 +1,10 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("kotlin-parcelize")
-    id("com.google.gms.google-services")
-    id("androidx.navigation.safeargs")
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -18,6 +18,15 @@ android {
         versionCode Versions.versionCode
         versionName Versions.versionName
         testInstrumentationRunner DefaultConfigs.testInstrumentationRunner
+
+        /*javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }*/
     }
 
     buildTypes {
@@ -43,6 +52,11 @@ dependencies {
     implementation(
             fileTree(dir: "libs", include: ["*.jar"]),
             platform(FirebaseDependencies.platformBOM),
+
+            project(ProjectModules.core),
+            project(ProjectModules.auth),
+            project(ProjectModules.main),
+
             CoreDependencies.kotlinLib,
             CoreDependencies.androidxCore,
             CoreDependencies.androidxAppCompat,
@@ -70,10 +84,6 @@ dependencies {
     )
     kapt(
             AndroidArchDependencies.daggerCompiler,
-            AndroidArchDependencies.roomCompiler,
-            OtherUtilityDependencies.glideCompiler
-    )
-    annotationProcessor(
             AndroidArchDependencies.roomCompiler,
             OtherUtilityDependencies.glideCompiler
     )

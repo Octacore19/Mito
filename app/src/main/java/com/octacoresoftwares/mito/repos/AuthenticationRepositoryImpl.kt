@@ -3,10 +3,10 @@ package com.octacoresoftwares.mito.repos
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.octacoresoftwares.mito.di.RegistrationScope
-import com.octacoresoftwares.mito.models.Result.*
-import com.octacoresoftwares.mito.models.User
-import com.octacoresoftwares.mito.utils.UserRegistrationManager
+import com.octacoresoftwares.core.di.RegistrationScope
+import com.octacoresoftwares.core.models.Result.*
+import com.octacoresoftwares.core.models.User
+import com.octacoresoftwares.core.utils.UserRegistrationManager
 import javax.inject.Inject
 
 class LoginRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : LoginRepository {

@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.octacoresoftwares.mito.di.DaggerAppComponent
 
 class MitoApplication: Application() {
 
@@ -18,9 +17,9 @@ class MitoApplication: Application() {
     }
 
     // Instance of the AppComponent that will be used by all the Activities in the project
-    val appComponent by lazy {
+    /*val appComponent by lazy {
         initializeComponent()
-    }
+    }*/
 
-    private fun initializeComponent() = DaggerAppComponent.factory().create(Firebase.auth)
+//    private fun initializeComponent() = DaggerAppComponent.factory().create(Firebase.auth)
 }

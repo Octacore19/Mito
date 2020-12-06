@@ -30,19 +30,25 @@ android {
     kotlinOptions {
         jvmTarget = Versions.jvm
     }
+    buildFeatures {
+        dataBinding DefaultConfigs.dataBinding
+    }
 }
 
 dependencies {
 
     implementation(
+            fileTree(dir: "libs", include: ["*.jar"]),
             CoreDependencies.kotlinLib,
             CoreDependencies.androidxCore,
             CoreDependencies.androidxAppCompat,
             CoreDependencies.materialDesign,
             CoreDependencies.legacySupport,
+            ViewsDependencies.constraintLayout,
             AndroidArchDependencies.navFragKtx,
             AndroidArchDependencies.navUiKtx,
-            AndroidArchDependencies.navDynamicFeatures
+            AndroidArchDependencies.navDynamicFeatures,
+            project(ProjectModules.core)
     )
 
     testImplementation(
