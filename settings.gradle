@@ -1,5 +1,9 @@
-include ':core'
-include ':main'
-include ':auth'
 include ':app'
+include ':auth'
+include ':core'
+include ':domain'
+include ':firebase'
+include ':local'
+include ':main'
+include ':repo'
 rootProject.name = "Mito"

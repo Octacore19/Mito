@@ -12,20 +12,17 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.octacoresoftwares.auth.adapters.AuthenticationChooserAdapter
 import com.octacoresoftwares.auth.databinding.FragmentAuthenticationBinding
 import com.octacoresoftwares.core.base.BaseFragment
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import javax.inject.Inject
 
 class AuthenticationFragment : BaseFragment<FragmentAuthenticationBinding, AuthenticationViewModel>() {
 
     private lateinit var binding: FragmentAuthenticationBinding
-//    lateinit var model: AuthenticationViewModel
 
-    /*override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val view = inflater.inflate(R.layout.fragment_authentication, container, false)
-        binding = FragmentAuthenticationBinding.bind(view)
-        return binding.root
-    }*/
+    private val appComponent by lazy {
+//        (requireActivity().application as Mi)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

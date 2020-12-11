@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
-    id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs'
 }
 
@@ -64,20 +63,13 @@ dependencies {
 
     implementation(
             fileTree(dir: "libs", include: ["*.jar"]),
-            platform(FirebaseDependencies.platformBOM),
             AndroidArchDependencies.work,
-            AndroidArchDependencies.room,
-            AndroidArchDependencies.roomRuntime,
-            FirebaseDependencies.analytics,
-            FirebaseDependencies.auth,
-            FirebaseDependencies.firestore,
             OtherUtilityDependencies.glide,
             OtherUtilityDependencies.timber
     )
     kapt(
             AndroidArchDependencies.daggerCompiler,
             AndroidArchDependencies.daggerAndroidProcessor,
-            AndroidArchDependencies.roomCompiler,
             OtherUtilityDependencies.glideCompiler
     )
 

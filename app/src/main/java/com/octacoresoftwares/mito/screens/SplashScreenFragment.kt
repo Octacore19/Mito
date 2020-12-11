@@ -11,10 +11,8 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.octacoresoftwares.main.MainFragmentDirections
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentSplashScreenBinding
-import com.octacoresoftwares.mito.screens.container.ToolbarCallback
 
 
 class SplashScreenFragment : Fragment() {

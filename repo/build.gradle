@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+}
+
+dependencies {
+    implementation(
+            fileTree(dir: 'libs', include: ['*.jar']),
+            CoreDependencies.kotlinLib,
+            AndroidArchDependencies.dagger,
+            project(ProjectModules.domain)
+    )
+
+    kapt(
+            AndroidArchDependencies.daggerCompiler
+    )
+}

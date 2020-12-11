@@ -19,7 +19,7 @@
             tools:replace="android:launchMode" />
 
         <activity
-            android:name="com.octacoresoftwares.mito.screens.container.MainActivity"
+            android:name="com.octacoresoftwares.mito.screens.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/app_name">
             <intent-filter>

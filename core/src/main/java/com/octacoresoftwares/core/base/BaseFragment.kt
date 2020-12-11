@@ -54,5 +54,4 @@ abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Dagg
             InputMethodManager.HIDE_IMPLICIT_ONLY
         )
     }
-
 }

@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolVersion
+
+    defaultConfig {
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner DefaultConfigs.testInstrumentationRunner
+        consumerProguardFiles DefaultConfigs.consumerProguard
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = Versions.jvm
+    }
+}
+
+dependencies {
+
+    implementation(
+            CoreDependencies.kotlinLib,
+            CoreDependencies.androidxCore,
+            AndroidArchDependencies.room,
+            AndroidArchDependencies.roomRuntime,
+            AndroidArchDependencies.dagger,
+
+            project(ProjectModules.domain)
+    )
+
+    kapt(
+            AndroidArchDependencies.daggerCompiler,
+            AndroidArchDependencies.roomCompiler
+    )
+}

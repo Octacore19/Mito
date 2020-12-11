@@ -1,32 +1,23 @@
 package com.octacoresoftwares.mito.di
 
-import com.google.firebase.auth.FirebaseAuth
-import com.octacoresoftwares.core.di.ViewModelBuilderModule
+import com.octacoresoftwares.mito.MitoApplication
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Component(
-    modules = [ViewModelBuilderModule::class/*,
-        SubComponentModule::class*/]
+    modules = [
+        AndroidSupportInjectionModule::class,
+        AppCoreModules::class
+    ]
 )
 @Singleton
-interface AppComponent {
+interface AppComponent : AndroidInjector<MitoApplication>{
 
-   @Component.Factory
+    @Component.Factory
     interface Factory {
-        fun create(@BindsInstance firebaseAuth: FirebaseAuth): AppComponent
+        fun create(@BindsInstance superApp: MitoApplication): AppComponent
     }
-
-    /*fun loginComponent(): LoginComponent.Factory
-    fun registrationComponent(): RegistrationComponent.Factory
-    fun userManager(): UserManager*/
 }
-
-/*
-@Module(
-    subcomponents = [*/
-/*LoginComponent::class, RegistrationComponent::class,*//*
- UserComponent::class]
-)
-object SubComponentModule*/

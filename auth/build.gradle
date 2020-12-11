@@ -39,7 +39,8 @@ dependencies {
 
     implementation(
             fileTree(dir: "libs", include: ["*.jar"]),
-            project(ProjectModules.core)
+            project(ProjectModules.core),
+            project(ProjectModules.domain)
     )
 
     testImplementation(

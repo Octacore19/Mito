@@ -1,14 +1,29 @@
-package com.octacoresoftwares.mito.screens.container
+package com.octacoresoftwares.mito.screens
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.octacoresoftwares.core.base.BaseActivity
+import com.octacoresoftwares.core.base.BaseViewModel
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.ActivityMainBinding
+import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : AppCompatActivity(), ToolbarCallback {
+class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>(), ToolbarCallback {
+
+    override fun getViewModel(): BaseViewModel? = null
+
+    override fun getLayoutId(): Int = R.layout.activity_main
+
+    override fun getViewModelBindingVariable(): Int = 0
+
+    override fun getViewDataBinding(binding: ActivityMainBinding?) {
+        if (binding != null) {
+            this.binding = binding
+        }
+    }
 
     private lateinit var binding: ActivityMainBinding
 

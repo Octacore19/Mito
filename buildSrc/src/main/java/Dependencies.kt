@@ -4,7 +4,7 @@ object Versions {
     const val minSdkVersion = 23
     const val versionCode = 1
     const val versionName = "1.0"
-    const val buildToolVersion = "30.0.0"
+    const val buildToolVersion = "30.0.2"
     const val kotlin = "1.4.20"
     const val gradle = "4.1.1"
     const val jvm = "1.8"
@@ -25,7 +25,8 @@ object Versions {
     const val material = "1.2.1"
     const val glide = "4.11.0"
     const val room = "2.3.0-alpha02"
-    const val coroutine = "2.3.0-beta01"
+    const val coroutineLifecycle = "2.3.0-beta01"
+    const val coroutineAndroid = "1.3.9"
     const val work = "2.4.0"
     const val dagger = "2.27"
     const val firebase = "26.0.0"
@@ -106,15 +107,20 @@ object OtherUtilityDependencies {
 }
 
 object CoroutineDependencies {
-    const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.coroutine}"
-    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.coroutine}"
-    const val liveData =  "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.coroutine}"
+    const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutineAndroid}"
+    const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.coroutineLifecycle}"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.coroutineLifecycle}"
+    const val liveData =  "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.coroutineLifecycle}"
 }
 
 object ProjectModules {
     const val auth = ":auth"
     const val core = ":core"
     const val main = ":main"
+    const val local = ":local"
+    const val repo = ":repo"
+    const val domain = ":domain"
+    const val firebase = ":firebase"
 }
 
 object NetworkDependencies {
