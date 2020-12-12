@@ -1,4 +1,4 @@
-package com.octacoresoftwares.auth.screens
+package com.octacoresoftwares.auth.screens.registration
 
 import android.os.Bundle
 import android.view.LayoutInflater

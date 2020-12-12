@@ -5,17 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.octacoresoftwares.auth.BR
 import com.octacoresoftwares.core.base.BaseViewModel
-import com.octacoresoftwares.core.utils.ObservableViewModel
 import com.octacoresoftwares.core.utils.isValidEmail
 import com.octacoresoftwares.domain.ResultCallback
+import com.octacoresoftwares.domain.interactors.LoginUseCase
+import com.octacoresoftwares.domain.interactors.LoginUseCase.LoginParams
 import com.octacoresoftwares.domain.models.BaseDomainModel
-import com.octacoresoftwares.domain.models.firebase.AuthUserModel
-import com.octacoresoftwares.domain.repository.ILoginRepository
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-    private val repo: ILoginRepository
-): BaseViewModel() {
+    private val loginUseCase: LoginUseCase
+) : BaseViewModel() {
 
     private val _loginResult = MutableLiveData<BaseDomainModel<*>>()
     val loginResult: LiveData<BaseDomainModel<*>> = _loginResult
@@ -100,20 +99,21 @@ class LoginViewModel @Inject constructor(
         }
 
     fun login() {
-        repo.loginUser(userEmail.trim(), userPassword.trim(), object : ResultCallback {
-            override fun <R> result(r: R) {
-                _loginResult.postValue(r as BaseDomainModel<*>)
-            }
-        })
+        loginUseCase.buildFirebaseTask(
+            LoginParams(
+                userEmail.trim(),
+                userPassword.trim()
+            ),
+            object : ResultCallback {
+                override fun <R> result(r: R) {
+                    _loginResult.postValue(r as BaseDomainModel<*>)
+                }
+            })
     }
 
     private fun enableLoginButton() = if (userEmail.isNotEmpty() && userPassword.isNotEmpty()) {
         !passwordErrorEnabled && !emailErrorEnabled
     } else {
         false
-    }
-
-    fun logOutUser() {
-        repo.signOut()
     }
 }
