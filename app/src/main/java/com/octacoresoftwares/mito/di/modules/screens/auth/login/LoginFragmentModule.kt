@@ -1,12 +1,12 @@
-package com.octacoresoftwares.mito.di.modules.screens.auth
+package com.octacoresoftwares.mito.di.modules.screens.auth.login
 
 import com.octacoresoftwares.auth.screens.LoginFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class LoginModule {
+abstract class LoginFragmentModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [LoginModule::class])
     abstract fun bindLoginFragment(): LoginFragment
 }

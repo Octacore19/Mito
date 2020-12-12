@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.addCallback
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.core.content.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: DaggerFragment() {
@@ -22,9 +26,15 @@ abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Dagg
 
     abstract fun getViewModelBindingVariable(): Int
 
-    abstract fun getViewDataBinding(binding: D?)
+    abstract fun setViewDataBinding(binding: D?)
 
     open fun setViewModelObservers(){}
+
+    open fun setBackPressedListener(){
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, true) {
+            fragmentNavController?.navigateUp()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,11 +44,12 @@ abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Dagg
         val binding: D = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.apply {
             setVariable(getViewModelBindingVariable(), getViewModel())
-            executePendingBindings()
             lifecycleOwner = this@BaseFragment
+            executePendingBindings()
         }
         setViewModelObservers()
-        getViewDataBinding(binding)
+        setViewDataBinding(binding)
+        setBackPressedListener()
         return binding.root
     }
 
@@ -53,5 +64,17 @@ abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Dagg
             InputMethodManager.SHOW_FORCED,
             InputMethodManager.HIDE_IMPLICIT_ONLY
         )
+    }
+
+    private var fragmentNavController: NavController? = null
+
+    fun getFragmentNavController() = fragmentNavController
+
+    fun setFragmentNavController(@IdRes id: Int) {
+        fragmentNavController = requireActivity().findNavController(id)
+    }
+
+    fun setFragmentNavController() {
+        fragmentNavController = findNavController()
     }
 }

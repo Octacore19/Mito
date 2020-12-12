@@ -4,7 +4,7 @@ import timber.log.Timber
 
 object AppLog {
 
-    fun init() {
+    init {
         Timber.plant(Timber.DebugTree())
     }
 

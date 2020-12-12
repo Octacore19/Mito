@@ -8,9 +8,9 @@ import com.octacoresoftwares.repo.IAuthenticationRepository
 import javax.inject.Inject
 
 class LoginRepository @Inject constructor(
-    private val auth: IAuthenticationRepository,
+    private val auth: IAuthenticationRepository/*,
     private val database: IAppLocalDatabase,
-    private val preferences: IAppLocalPreferences
+    private val preferences: IAppLocalPreferences*/
 ): ILoginRepository {
 
     override fun <C> loginUser(email: String, password: String, callback: C) {

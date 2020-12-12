@@ -1,6 +1,5 @@
 package com.octacoresoftwares.repo.implementations
 
-import com.octacoresoftwares.domain.ResultCallback
 import com.octacoresoftwares.domain.local.IAppLocalDatabase
 import com.octacoresoftwares.domain.local.IAppLocalPreferences
 import com.octacoresoftwares.domain.repository.IRegistrationRepository

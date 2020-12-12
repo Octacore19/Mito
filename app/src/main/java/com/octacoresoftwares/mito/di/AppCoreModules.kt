@@ -5,5 +5,11 @@ import com.octacoresoftwares.mito.di.modules.firebase.FirebaseInstanceModules
 import com.octacoresoftwares.mito.di.modules.viewmodel.ViewModelBuilderModule
 import dagger.Module
 
-@Module(includes = [FirebaseInstanceModules::class, AppMainModules::class, ViewModelBuilderModule::class])
+@Module(
+    includes = [
+        ViewModelBuilderModule::class,
+        FirebaseInstanceModules::class,
+        AppMainModules::class
+    ]
+)
 object AppCoreModules

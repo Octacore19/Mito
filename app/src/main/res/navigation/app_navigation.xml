@@ -39,5 +39,11 @@
         android:id="@+id/navigation_authentication"
         android:name="com.octacoresoftwares.auth.AuthenticationFragment"
         android:label="@string/title_authentication"
-        tools:layout="@layout/fragment_authentication" />
+        tools:layout="@layout/fragment_authentication" >
+        <action
+            android:id="@+id/action_navigation_authentication_to_navigation_main"
+            app:destination="@id/navigation_main"
+            app:popUpTo="@id/navigation_authentication"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
