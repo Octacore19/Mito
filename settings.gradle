@@ -1,3 +1,7 @@
+include ':profile'
+include ':chats'
+include ':matches'
+include ':nearby'
 include ':app'
 include ':auth'
 include ':core'

@@ -2,13 +2,16 @@ package com.octacoresoftwares.auth
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.octacoresoftwares.auth.adapters.AuthenticationChooserAdapter
 import com.octacoresoftwares.auth.databinding.FragmentAuthenticationBinding
 import com.octacoresoftwares.core.base.BaseFragment
 import com.octacoresoftwares.core.base.BaseViewModel
+import com.octacoresoftwares.domain.navigation.auth.IAuthenticationNav
 import javax.inject.Inject
 
 class AuthenticationFragment :
@@ -23,7 +26,6 @@ class AuthenticationFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setFragmentNavController()
         binding.pager.adapter = AuthenticationChooserAdapter(this)
         TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
             when (position) {

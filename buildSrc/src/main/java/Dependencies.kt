@@ -121,6 +121,10 @@ object ProjectModules {
     const val repo = ":repo"
     const val domain = ":domain"
     const val firebase = ":firebase"
+    const val nearby = ":nearby"
+    const val profile = ":profile"
+    const val chat = ":chats"
+    const val matches = ":matches"
 }
 
 object NetworkDependencies {

@@ -40,9 +40,34 @@ dependencies {
 
     implementation(
             fileTree(dir: "libs", include: ["*.jar"]),
+
+            CoreDependencies.kotlinLib,
+            CoreDependencies.androidxCore,
+            CoreDependencies.androidxAppCompat,
+            CoreDependencies.materialDesign,
+            CoreDependencies.legacySupport,
+            CoreDependencies.lifecycle,
+            AndroidArchDependencies.navFragKtx,
+            AndroidArchDependencies.navUiKtx,
+            AndroidArchDependencies.navDynamicFeatures,
+            AndroidArchDependencies.dagger,
+            AndroidArchDependencies.daggerAndroidSupport,
+            CoroutineDependencies.runtime,
+            CoroutineDependencies.viewModel,
+            CoroutineDependencies.liveData,
+            ViewsDependencies.cardView,
+            ViewsDependencies.recyclerView,
+            ViewsDependencies.constraintLayout,
+
             project(ProjectModules.core),
+            project(ProjectModules.repo),
             project(ProjectModules.domain),
             project(ProjectModules.main)
+    )
+
+    kapt (
+            AndroidArchDependencies.daggerCompiler,
+            AndroidArchDependencies.daggerAndroidProcessor
     )
 
     testImplementation(

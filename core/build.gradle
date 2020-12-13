@@ -40,7 +40,8 @@ android {
 
 dependencies {
 
-    api(
+    implementation(
+            fileTree(dir: "libs", include: ["*.jar"]),
             CoreDependencies.kotlinLib,
             CoreDependencies.androidxCore,
             CoreDependencies.androidxAppCompat,
@@ -58,14 +59,12 @@ dependencies {
             ViewsDependencies.cardView,
             ViewsDependencies.recyclerView,
             ViewsDependencies.constraintLayout,
-            ViewsDependencies.circleImageView
-    )
-
-    implementation(
-            fileTree(dir: "libs", include: ["*.jar"]),
+            ViewsDependencies.circleImageView,
             AndroidArchDependencies.work,
             OtherUtilityDependencies.glide,
-            OtherUtilityDependencies.timber
+            OtherUtilityDependencies.timber,
+
+            project(ProjectModules.domain)
     )
     kapt(
             AndroidArchDependencies.daggerCompiler,

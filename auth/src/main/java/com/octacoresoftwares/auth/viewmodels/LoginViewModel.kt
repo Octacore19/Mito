@@ -7,8 +7,8 @@ import com.octacoresoftwares.auth.BR
 import com.octacoresoftwares.core.base.BaseViewModel
 import com.octacoresoftwares.core.utils.isValidEmail
 import com.octacoresoftwares.domain.ResultCallback
-import com.octacoresoftwares.domain.interactors.LoginUseCase
-import com.octacoresoftwares.domain.interactors.LoginUseCase.LoginParams
+import com.octacoresoftwares.domain.interactors.auth.LoginUseCase
+import com.octacoresoftwares.domain.interactors.auth.LoginUseCase.LoginParams
 import com.octacoresoftwares.domain.models.BaseDomainModel
 import javax.inject.Inject
 

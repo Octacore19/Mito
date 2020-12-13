@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.octacoresoftwares.core.base.BaseFragment
 import com.octacoresoftwares.core.base.BaseViewModel
+import com.octacoresoftwares.core.navigation.IMainNavigation
 import com.octacoresoftwares.main.databinding.FragmentMainBinding
 import javax.inject.Inject
 
@@ -17,6 +19,9 @@ class MainFragment : BaseFragment<FragmentMainBinding, BaseViewModel>() {
     lateinit var factory: ViewModelProvider.Factory
 
     private val model by viewModels<BaseViewModel> { factory }
+
+    @Inject
+    lateinit var navigation: IMainNavigation
 
     private lateinit var binding: FragmentMainBinding
 
@@ -34,8 +39,17 @@ class MainFragment : BaseFragment<FragmentMainBinding, BaseViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setFragmentNavController(R.id.main_host_fragment)
         val navView: BottomNavigationView = view.findViewById(R.id.nav_view)
         getFragmentNavController()?.let { NavigationUI.setupWithNavController(navView, it) }
+
+        setBackPressedListener(this) {
+            getFragmentNavController()?.addOnDestinationChangedListener { controller, destination, _ ->
+                if (destination.id == R.id.navigation_dashboard) {
+                    navigation.actionBackMain(this)
+                } else {
+                    controller.navigateUp()
+                }
+            }
+        }
     }
 }

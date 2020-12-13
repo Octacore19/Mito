@@ -8,8 +8,12 @@ import javax.inject.Inject
 
 class CreateAccountAuthentication @Inject constructor(
     private val auth: IFirebaseAuth
-): ICreateAccountAuthentication {
-    override fun createAccountWithEmailAndPassword(email: String, password: String, callback: ResultCallback) {
+) : ICreateAccountAuthentication {
+    override fun createAccountWithEmailAndPassword(
+        email: String,
+        password: String,
+        callback: ResultCallback
+    ) {
         auth.createAccountWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 callback.result(

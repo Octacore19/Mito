@@ -16,4 +16,8 @@ open class BaseViewModel @Inject constructor(): ObservableViewModel() {
 
     @get: Bindable
     var startSplashscreenAnimation = false
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.startSplashscreenAnimation)
+        }
 }

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -39,7 +40,37 @@ dependencies {
 
     implementation(
             fileTree(dir: "libs", include: ["*.jar"]),
+
+
+            CoreDependencies.kotlinLib,
+            CoreDependencies.androidxCore,
+            CoreDependencies.androidxAppCompat,
+            CoreDependencies.materialDesign,
+            CoreDependencies.legacySupport,
+            CoreDependencies.lifecycle,
+            AndroidArchDependencies.navFragKtx,
+            AndroidArchDependencies.navUiKtx,
+            AndroidArchDependencies.navDynamicFeatures,
+            AndroidArchDependencies.dagger,
+            AndroidArchDependencies.daggerAndroidSupport,
+            CoroutineDependencies.runtime,
+            CoroutineDependencies.viewModel,
+            CoroutineDependencies.liveData,
+            ViewsDependencies.cardView,
+            ViewsDependencies.recyclerView,
+            ViewsDependencies.constraintLayout,
+
             project(ProjectModules.core),
+            project(ProjectModules.nearby),
+            project(ProjectModules.chat),
+            project(ProjectModules.matches),
+            project(ProjectModules.profile),
+            project(ProjectModules.domain)
+    )
+
+    kapt (
+            AndroidArchDependencies.daggerCompiler,
+            AndroidArchDependencies.daggerAndroidProcessor
     )
 
     testImplementation(

@@ -8,7 +8,7 @@ import com.octacoresoftwares.firebase.implementations.FirebaseAuthImpl
 import com.octacoresoftwares.firebase.implementations.FirebaseFireStoreImpl
 import com.octacoresoftwares.firebase.implementations.FirebaseInstances
 import com.octacoresoftwares.mito.MitoApplication
-import com.octacoresoftwares.mito.di.modules.screens.MainActivityModules
+import com.octacoresoftwares.mito.di.modules.screens.activity.MainActivityModules
 import dagger.Binds
 import dagger.Module
 

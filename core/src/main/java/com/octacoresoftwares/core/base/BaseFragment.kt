@@ -9,15 +9,18 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.NavigationRes
 import androidx.core.content.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.octacoresoftwares.core.utils.AppLog
 import dagger.android.support.DaggerFragment
 
-abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: DaggerFragment() {
+abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel> : DaggerFragment() {
 
     abstract fun getViewModel(): V?
 
@@ -28,11 +31,12 @@ abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Dagg
 
     abstract fun setViewDataBinding(binding: D?)
 
-    open fun setViewModelObservers(){}
+    open fun setViewModelObservers() {}
 
-    open fun setBackPressedListener(){
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, true) {
-            fragmentNavController?.navigateUp()
+    fun setBackPressedListener(fragment: Fragment, action: () -> Unit) {
+        requireActivity().onBackPressedDispatcher.addCallback(fragment, true) {
+            AppLog.d("Back button triggered")
+            action.invoke()
         }
     }
 
@@ -49,7 +53,6 @@ abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Dagg
         }
         setViewModelObservers()
         setViewDataBinding(binding)
-        setBackPressedListener()
         return binding.root
     }
 
@@ -70,11 +73,19 @@ abstract class BaseFragment<in D : ViewDataBinding, out V : BaseViewModel>: Dagg
 
     fun getFragmentNavController() = fragmentNavController
 
-    fun setFragmentNavController(@IdRes id: Int) {
-        fragmentNavController = requireActivity().findNavController(id)
-    }
-
     fun setFragmentNavController() {
         fragmentNavController = findNavController()
+    }
+
+    fun setFragmentNavController(@IdRes containerId: Int) {
+        val host = childFragmentManager.findFragmentById(containerId) as NavHostFragment
+        fragmentNavController = host.navController
+    }
+
+    fun setNavigationGraph(@IdRes containerId: Int, @NavigationRes graphId: Int) {
+        val host = NavHostFragment.create(graphId)
+        childFragmentManager.beginTransaction()
+            .replace(containerId, host)
+            .commit()
     }
 }

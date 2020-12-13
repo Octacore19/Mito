@@ -2,8 +2,10 @@ package com.octacoresoftwares.mito.screens
 
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.octacoresoftwares.core.base.BaseActivity
 import com.octacoresoftwares.core.base.BaseViewModel
+import com.octacoresoftwares.core.utils.AppLog
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.ActivityMainBinding
 import javax.inject.Inject

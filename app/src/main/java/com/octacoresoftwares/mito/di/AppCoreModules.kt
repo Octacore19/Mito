@@ -2,7 +2,7 @@ package com.octacoresoftwares.mito.di
 
 import com.octacoresoftwares.mito.di.modules.AppMainModules
 import com.octacoresoftwares.mito.di.modules.firebase.FirebaseInstanceModules
-import com.octacoresoftwares.mito.di.modules.viewmodel.ViewModelBuilderModule
+import com.octacoresoftwares.core.di.modules.ViewModelBuilderModule
 import dagger.Module
 
 @Module(

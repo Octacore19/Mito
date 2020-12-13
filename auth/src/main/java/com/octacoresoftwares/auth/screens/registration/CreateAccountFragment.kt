@@ -1,38 +1,56 @@
 package com.octacoresoftwares.auth.screens.registration
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import com.octacoresoftwares.auth.BR
 import com.octacoresoftwares.auth.R
+import com.octacoresoftwares.auth.databinding.FragmentCreateAccountBinding
+import com.octacoresoftwares.auth.viewmodels.CreateAccountViewModel
+import com.octacoresoftwares.auth.viewmodels.LoginViewModel
 import com.octacoresoftwares.core.base.BaseFragment
-import com.octacoresoftwares.core.base.BaseViewModel
+import com.octacoresoftwares.core.utils.AppLog
+import javax.inject.Inject
 
-class CreateAccountFragment : BaseFragment<ViewDataBinding, BaseViewModel>() {
+class CreateAccountFragment : BaseFragment<FragmentCreateAccountBinding, CreateAccountViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_account, container, false)
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
+    private val model by viewModels<CreateAccountViewModel> { factory }
+
+    private val controller by lazy {
+        (requireParentFragment() as NavHostFragment).navController
     }
 
-    override fun getViewModel(): BaseViewModel? {
-        TODO("Not yet implemented")
+    private lateinit var binding: FragmentCreateAccountBinding
+
+    override fun getViewModel(): CreateAccountViewModel = model
+
+    override fun getLayoutId(): Int = R.layout.fragment_create_account
+
+    override fun getViewModelBindingVariable(): Int = BR.vm
+
+    override fun setViewDataBinding(binding: FragmentCreateAccountBinding?) {
+        binding?.let {
+            this.binding = it
+        }
     }
 
-    override fun getLayoutId(): Int {
-        TODO("Not yet implemented")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        AppLog.d("Fragment in create: $controller")
     }
 
-    override fun getViewModelBindingVariable(): Int {
-        TODO("Not yet implemented")
-    }
-
-    override fun setViewDataBinding(binding: ViewDataBinding?) {
-        TODO("Not yet implemented")
+    override fun setViewModelObservers() {
+        model.createAccountResult.observe({ lifecycle }) {
+            it?.let { data ->
+                if (data.successful) {
+                    controller.navigate(R.id.action_create_account_fragment_to_name_registration_fragment)
+                }
+            }
+        }
     }
 }

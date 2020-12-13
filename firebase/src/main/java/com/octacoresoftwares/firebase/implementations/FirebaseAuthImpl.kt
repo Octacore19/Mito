@@ -4,25 +4,29 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.octacoresoftwares.firebase.contracts.IFirebaseAuth
 import javax.inject.Inject
 
 class FirebaseAuthImpl @Inject constructor(
     private val auth: FirebaseAuth
-    ): IFirebaseAuth {
+) : IFirebaseAuth {
 
     override fun loginWithEmailAndPassword(email: String, password: String): Task<AuthResult> =
         auth.signInWithEmailAndPassword(email, password)
 
-    override fun createAccountWithEmailAndPassword(email: String, password: String): Task<AuthResult> =
+    override fun createAccountWithEmailAndPassword(
+        email: String,
+        password: String
+    ): Task<AuthResult> =
         auth.createUserWithEmailAndPassword(email, password)
 
     override fun updateUsername(username: String): Task<Void>? {
-        val profileUpdate = UserProfileChangeRequest.Builder()
-        profileUpdate.displayName = username
-        val update = profileUpdate.build()
+        val profileUpdate = userProfileChangeRequest {
+            displayName = username
+        }
         val user = auth.currentUser
-        return user?.updateProfile(update)
+        return user?.updateProfile(profileUpdate)
     }
 
     override fun signOut() {

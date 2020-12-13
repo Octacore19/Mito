@@ -1,7 +1,5 @@
 package com.octacoresoftwares.firebase.implementations
 
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.octacoresoftwares.domain.ResultCallback
 import com.octacoresoftwares.domain.firebase.ILoginAuthentication
 import com.octacoresoftwares.domain.models.BaseDomainModel
@@ -11,13 +9,21 @@ import javax.inject.Inject
 
 class LoginAuthentication @Inject constructor(
     private val auth: IFirebaseAuth
-): ILoginAuthentication {
+) : ILoginAuthentication {
 
-    override fun loginWithEmailAndPassword(email: String, password: String, callback: ResultCallback) {
+    override fun loginWithEmailAndPassword(
+        email: String,
+        password: String,
+        callback: ResultCallback
+    ) {
         auth.createAccountWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 it.user?.let { user ->
-                    val userModel = AuthUserModel(email = user.email, userId = user.uid, emailVerified = user.isEmailVerified)
+                    val userModel = AuthUserModel(
+                        email = user.email,
+                        userId = user.uid,
+                        emailVerified = user.isEmailVerified
+                    )
                     callback.result(
                         BaseDomainModel(
                             successful = true,

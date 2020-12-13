@@ -5,15 +5,16 @@
 
     <data>
 
-        <!--<variable
+        <variable
             name="vm"
-            type="com.octacoresoftwares.mito.screens.registration.create.CreateAccountViewModel" />-->
+            type="com.octacoresoftwares.auth.viewmodels.CreateAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        app:setVisible="@{vm.layoutVisible}"
         tools:theme="@style/AppTheme.NoActionBar">
 
         <com.google.android.material.card.MaterialCardView
@@ -40,7 +41,8 @@
                         android:id="@+id/user_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:text="@={vm.userName}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -48,13 +50,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:hint="@string/email">
+                    android:hint="@string/email"
+                    app:enableError="@{vm.emailErrorEnabled}"
+                    app:errorText="@{vm.emailErrorText}">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/new_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:text="@={vm.userEmail}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -63,13 +68,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/password"
-                    app:endIconMode="password_toggle">
+                    app:enableError="@{vm.passwordErrorEnabled}"
+                    app:endIconMode="password_toggle"
+                    app:errorText="@{vm.passwordErrorText}">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/new_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:text="@={vm.userPassword}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -78,13 +86,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/confirm_password"
-                    app:endIconMode="password_toggle">
+                    app:enableError="@{vm.confirmPasswordErrorEnabled}"
+                    app:endIconMode="password_toggle"
+                    app:errorText="@{vm.confirmPasswordErrorText}">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/confirm_new_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:text="@={vm.confirmUserPassword}" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -94,6 +105,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:enabled="@{vm.createAccountButtonEnabled}"
+            android:onClick="@{() -> vm.createAccount()}"
             android:text="@string/create_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

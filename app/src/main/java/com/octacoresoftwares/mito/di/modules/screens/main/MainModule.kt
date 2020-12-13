@@ -1,12 +1,12 @@
 package com.octacoresoftwares.mito.di.modules.screens.main
 
-import com.octacoresoftwares.main.MainFragment
+import com.octacoresoftwares.main.di.MainFragmentModule
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
 
-@Module
-abstract class MainModule {
-
-    @ContributesAndroidInjector
-    abstract fun bindMainFragment(): MainFragment
-}
+@Module(
+    includes = [
+        MainFragmentModule::class,
+        NavigationModule::class
+    ]
+)
+object MainModule

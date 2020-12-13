@@ -9,8 +9,7 @@ import com.octacoresoftwares.auth.R
 import com.octacoresoftwares.auth.databinding.FragmentLoginBinding
 import com.octacoresoftwares.auth.viewmodels.LoginViewModel
 import com.octacoresoftwares.core.base.BaseFragment
-import com.octacoresoftwares.core.navigation.ILoginNavigation
-import com.octacoresoftwares.domain.models.firebase.AuthUserModel
+import com.octacoresoftwares.domain.navigation.auth.ILoginNav
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
@@ -19,7 +18,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     lateinit var factory: ViewModelProvider.Factory
 
     @Inject
-    lateinit var navigation: ILoginNavigation
+    lateinit var navigation: ILoginNav
 
     private val model by viewModels<LoginViewModel> { factory }
 
@@ -40,22 +39,21 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setFragmentNavController()
+        setBackPressedListener(this) {
+            requireActivity().finish()
+        }
     }
 
     override fun setViewModelObservers() {
         model.loginResult.observe({ lifecycle }) {
             it?.let { model ->
-                when (model.data) {
-                    is AuthUserModel -> {
-                        getFragmentNavController()?.let { controller ->
-                            navigation.actionLoginToMain(controller)
-                        }
+                if (model.successful) {
+                    getFragmentNavController()?.let { controller ->
+                        navigation.actionLoginToMain(controller)
                     }
-
-                    is Exception -> {
-                        getFragmentNavController()?.let { controller ->
-                            navigation.actionLoginToMain(controller)
-                        }
+                } else {
+                    getFragmentNavController()?.let { controller ->
+                        navigation.actionLoginToMain(controller)
                     }
                 }
             }

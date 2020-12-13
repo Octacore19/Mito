@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolVersion
+
+    defaultConfig {
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner DefaultConfigs.testInstrumentationRunner
+        consumerProguardFiles DefaultConfigs.consumerProguard
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = Versions.jvm
+    }
+    buildFeatures {
+        dataBinding DefaultConfigs.dataBinding
+    }
+}
+
+dependencies {
+
+    implementation(
+            fileTree(dir: "libs", include: ["*.jar"]),
+
+            CoreDependencies.kotlinLib,
+            CoreDependencies.androidxCore,
+            CoreDependencies.androidxAppCompat,
+            CoreDependencies.materialDesign,
+            CoreDependencies.legacySupport,
+            CoreDependencies.lifecycle,
+            AndroidArchDependencies.navFragKtx,
+            AndroidArchDependencies.navUiKtx,
+            AndroidArchDependencies.navDynamicFeatures,
+            AndroidArchDependencies.dagger,
+            AndroidArchDependencies.daggerAndroidSupport,
+            CoroutineDependencies.runtime,
+            CoroutineDependencies.viewModel,
+            CoroutineDependencies.liveData,
+            ViewsDependencies.cardView,
+            ViewsDependencies.recyclerView,
+            ViewsDependencies.constraintLayout,
+
+            project(ProjectModules.core)
+    )
+
+    kapt (
+            AndroidArchDependencies.daggerCompiler,
+            AndroidArchDependencies.daggerAndroidProcessor
+    )
+
+    testImplementation(
+            TestDependencies.jUnit
+    )
+
+    androidTestImplementation(
+            TestDependencies.androidJUnit,
+            TestDependencies.espresso
+    )
+}
