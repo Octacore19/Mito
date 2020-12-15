@@ -9,22 +9,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.octacoresoftwares.core.base.BaseFragment
 import com.octacoresoftwares.core.base.BaseViewModel
+import com.octacoresoftwares.core.utils.AppLog
 import com.octacoresoftwares.mito.BR
 import com.octacoresoftwares.mito.R
 import com.octacoresoftwares.mito.databinding.FragmentSplashScreenBinding
 import javax.inject.Inject
 
 
-class SplashScreenFragment : BaseFragment<FragmentSplashScreenBinding, BaseViewModel>() {
+class SplashScreenFragment : BaseFragment<FragmentSplashScreenBinding, AppViewModel>() {
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
-    private val model by viewModels<BaseViewModel> { factory }
+    private val model by viewModels<AppViewModel> { factory }
 
     private lateinit var binding: FragmentSplashScreenBinding
 
-    override fun getViewModel(): BaseViewModel = model
+    override fun getViewModel(): AppViewModel = model
 
     override fun getLayoutId(): Int = R.layout.fragment_splash_screen
 
@@ -38,8 +39,15 @@ class SplashScreenFragment : BaseFragment<FragmentSplashScreenBinding, BaseViewM
 
     override fun onStart() {
         super.onStart()
+        model.getCurrentUser()
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(SplashScreenFragmentDirections.actionNavigationSplashScreenToNavigationAuthentication())
+            model.currentUser.observe({ lifecycle }) {
+                if (it == null) {
+                    findNavController().navigate(SplashScreenFragmentDirections.actionNavigationSplashScreenToNavigationAuthentication())
+                } else {
+                    findNavController().navigate(SplashScreenFragmentDirections.actionNavigationSplashScreenToNavigationMain())
+                }
+            }
         }, 5000L)
         model.startSplashscreenAnimation = true
     }

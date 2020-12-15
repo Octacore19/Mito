@@ -59,7 +59,8 @@ dependencies {
             ViewsDependencies.recyclerView,
             ViewsDependencies.constraintLayout,
 
-            project(ProjectModules.core)
+            project(ProjectModules.core),
+            project(ProjectModules.domain)
     )
 
     kapt (

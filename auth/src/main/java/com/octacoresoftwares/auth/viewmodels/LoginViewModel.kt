@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.octacoresoftwares.auth.BR
 import com.octacoresoftwares.core.base.BaseViewModel
+import com.octacoresoftwares.core.utils.AppLog
 import com.octacoresoftwares.core.utils.isValidEmail
 import com.octacoresoftwares.domain.ResultCallback
 import com.octacoresoftwares.domain.interactors.auth.LoginUseCase
@@ -106,6 +107,7 @@ class LoginViewModel @Inject constructor(
             ),
             object : ResultCallback {
                 override fun <R> result(r: R) {
+                    AppLog.d("Result: $r")
                     _loginResult.postValue(r as BaseDomainModel<*>)
                 }
             })

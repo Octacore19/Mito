@@ -3,6 +3,7 @@ package com.octacoresoftwares.firebase.implementations
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.octacoresoftwares.firebase.contracts.IFirebaseAuth
@@ -28,6 +29,8 @@ class FirebaseAuthImpl @Inject constructor(
         val user = auth.currentUser
         return user?.updateProfile(profileUpdate)
     }
+
+    override fun getCurrentUser(): FirebaseUser? = auth.currentUser
 
     override fun signOut() {
         auth.signOut()

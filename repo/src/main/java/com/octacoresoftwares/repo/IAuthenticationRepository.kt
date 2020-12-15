@@ -6,5 +6,6 @@ interface IAuthenticationRepository {
     fun loginUser(email: String, password: String, result: ResultCallback)
     fun registerUser(email: String, password: String, result: ResultCallback)
     fun updateUsername(username: String, result: ResultCallback)
-    fun signOut()
+    /*fun getCurrentUser(): BaseDomainModel<*>
+    fun signOut()*/
 }

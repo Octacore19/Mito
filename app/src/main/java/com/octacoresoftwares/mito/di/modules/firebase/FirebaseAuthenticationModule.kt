@@ -21,8 +21,5 @@ abstract class FirebaseAuthenticationModule {
     abstract fun bindsLoginAuthentication(auth: LoginAuthentication): ILoginAuthentication
 
     @Binds
-    abstract fun bindsSignOutAuthentication(auth: SignOutAuthentication): ISignOutAuthentication
-
-    @Binds
     abstract fun bindsUpdateUserNameAuthentication(auth: UpdateUsernameAuthentication): IUpdateUsernameAuthentication
 }

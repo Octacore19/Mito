@@ -9,6 +9,7 @@ import com.octacoresoftwares.auth.R
 import com.octacoresoftwares.auth.databinding.FragmentLoginBinding
 import com.octacoresoftwares.auth.viewmodels.LoginViewModel
 import com.octacoresoftwares.core.base.BaseFragment
+import com.octacoresoftwares.core.utils.AppLog
 import com.octacoresoftwares.domain.navigation.auth.ILoginNav
 import javax.inject.Inject
 
@@ -52,9 +53,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
                         navigation.actionLoginToMain(controller)
                     }
                 } else {
-                    getFragmentNavController()?.let { controller ->
-                        navigation.actionLoginToMain(controller)
-                    }
+                    AppLog.e("Errors: ${model.data}")
                 }
             }
         }

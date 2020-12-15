@@ -16,8 +16,4 @@ class LoginRepository @Inject constructor(
     override fun <C> loginUser(email: String, password: String, callback: C) {
         auth.loginUser(email, password, callback as ResultCallback)
     }
-
-    override fun signOut() {
-        auth.signOut()
-    }
 }

@@ -43,6 +43,8 @@ class MainFragment : BaseFragment<FragmentMainBinding, BaseViewModel>() {
         getFragmentNavController()?.let { NavigationUI.setupWithNavController(navView, it) }
 
         setBackPressedListener(this) {
+            model.signOutUser()
+            requireActivity().finish()
             getFragmentNavController()?.addOnDestinationChangedListener { controller, destination, _ ->
                 if (destination.id == R.id.navigation_dashboard) {
                     navigation.actionBackMain(this)

@@ -15,7 +15,8 @@ abstract class MainActivityModules {
             ActivityModule::class,
             AuthModule::class,
             MainModule::class,
-            SplashscreenFragmentModule::class
+            SplashscreenFragmentModule::class,
+            UserModule::class
         ]
     )
     abstract fun bindMainActivity(): MainActivity

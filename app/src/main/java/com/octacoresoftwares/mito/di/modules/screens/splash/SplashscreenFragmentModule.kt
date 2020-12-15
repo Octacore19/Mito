@@ -7,6 +7,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class SplashscreenFragmentModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [SplashscreenModule::class])
     abstract fun bindSplashscreenFragment(): SplashScreenFragment
 }

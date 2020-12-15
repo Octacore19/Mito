@@ -30,4 +30,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
             this.binding = binding
         }
     }
+
+    override fun onDestroy() {
+        model.signOutUser()
+        super.onDestroy()
+    }
 }
